@@ -3,7 +3,7 @@
 ### Equipe
 1. Leandro Candido - Banco de Dados
 2. Erick Carneiro
-3.
+3. Ana Lívia Oliveira Lima
 4.
 
-Baixar o Netbeans
+Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
