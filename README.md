@@ -1,4 +1,4 @@
-# Projeto_POO_Swing_Equipe
+# Projeto_POO_Swing
 
 ### Equipe
 1. Leandro Candido - Banco de Dados
