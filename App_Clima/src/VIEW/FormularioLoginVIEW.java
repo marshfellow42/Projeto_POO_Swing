@@ -6,6 +6,7 @@ package VIEW;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
@@ -59,6 +60,11 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 txtNomeUsuarioActionPerformed(evt);
             }
         });
+        txtNomeUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeUsuarioKeyPressed(evt);
+            }
+        });
 
         Senha.setText("Senha");
 
@@ -79,6 +85,11 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         txtSenhaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaUsuarioActionPerformed(evt);
+            }
+        });
+        txtSenhaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaUsuarioKeyPressed(evt);
             }
         });
 
@@ -200,6 +211,19 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         checkSenhaLogin.setSelected(false);
         txtSenhaUsuario.setEchoChar('*');
     }//GEN-LAST:event_hideMousePressed
+
+    private void txtSenhaUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaUsuarioKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Logar();
+        }
+    }//GEN-LAST:event_txtSenhaUsuarioKeyPressed
+
+    private void txtNomeUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeUsuarioKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtSenhaUsuario.requestFocus();
+        }
+
+    }//GEN-LAST:event_txtNomeUsuarioKeyPressed
 
     /**
      * @param args the command line arguments
