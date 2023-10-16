@@ -190,12 +190,14 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private void viewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMousePressed
         hide.setVisible(true);
         view.setVisible(false);
+        checkSenhaLogin.setSelected(true);
         txtSenhaUsuario.setEchoChar((char) 0);
     }//GEN-LAST:event_viewMousePressed
 
     private void hideMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMousePressed
         view.setVisible(true);
         hide.setVisible(false);
+        checkSenhaLogin.setSelected(false);
         txtSenhaUsuario.setEchoChar('*');
     }//GEN-LAST:event_hideMousePressed
 
