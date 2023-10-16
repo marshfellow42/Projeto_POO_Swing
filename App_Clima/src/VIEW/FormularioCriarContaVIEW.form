@@ -92,9 +92,13 @@
     <Component class="javax.swing.JTextField" name="txtCriarNomeUsuario">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCriarNomeUsuarioActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCriarNomeUsuarioKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtCriarSenhaUsuario">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCriarSenhaUsuarioKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>

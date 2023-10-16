@@ -6,6 +6,7 @@ package VIEW;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -46,6 +47,17 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         txtCriarNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCriarNomeUsuarioActionPerformed(evt);
+            }
+        });
+        txtCriarNomeUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCriarNomeUsuarioKeyPressed(evt);
+            }
+        });
+
+        txtCriarSenhaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCriarSenhaUsuarioKeyPressed(evt);
             }
         });
 
@@ -137,31 +149,13 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCriarNomeUsuarioActionPerformed
 
     private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
-        String nome, senha;
-
-        nome = txtCriarNomeUsuario.getText();
-        senha = txtCriarSenhaUsuario.getText();
-
-        UsuarioDTO objusuariodto = new UsuarioDTO();
-        objusuariodto.setCriar_nome_usuario(nome);
-        objusuariodto.setCriar_senha_usuario(senha);
-
-        UsuarioDAO objusuariodao = new UsuarioDAO();
-        objusuariodao.cadastrarUsuario(objusuariodto);
-
-        //chamar tela principal
-        AppPrincipalVIEW objappprincipalview = new AppPrincipalVIEW();
-        objappprincipalview.setVisible(true);
-
-        dispose();
-
+        Criar();
     }//GEN-LAST:event_btnCriarContaActionPerformed
 
     private void checkSenhaCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSenhaCriarActionPerformed
         if (checkSenhaCriar.isSelected()) {
-            txtCriarSenhaUsuario.setEchoChar((char)0);
-        }
-        else {
+            txtCriarSenhaUsuario.setEchoChar((char) 0);
+        } else {
             txtCriarSenhaUsuario.setEchoChar('*');
         }
     }//GEN-LAST:event_checkSenhaCriarActionPerformed
@@ -169,7 +163,7 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     private void viewCriarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCriarMousePressed
         hideCriar.setVisible(true);
         viewCriar.setVisible(false);
-        txtCriarSenhaUsuario.setEchoChar((char)0);
+        txtCriarSenhaUsuario.setEchoChar((char) 0);
     }//GEN-LAST:event_viewCriarMousePressed
 
     private void hideCriarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideCriarMousePressed
@@ -177,6 +171,18 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         hideCriar.setVisible(false);
         txtCriarSenhaUsuario.setEchoChar('*');
     }//GEN-LAST:event_hideCriarMousePressed
+
+    private void txtCriarNomeUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCriarNomeUsuarioKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtCriarSenhaUsuario.requestFocus();
+        }
+    }//GEN-LAST:event_txtCriarNomeUsuarioKeyPressed
+
+    private void txtCriarSenhaUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCriarSenhaUsuarioKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Criar();
+        }
+    }//GEN-LAST:event_txtCriarSenhaUsuarioKeyPressed
 
     /**
      * @param args the command line arguments
@@ -223,4 +229,26 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtCriarSenhaUsuario;
     private javax.swing.JLabel viewCriar;
     // End of variables declaration//GEN-END:variables
+
+    private void Criar() {
+        String nome, senha;
+
+        nome = txtCriarNomeUsuario.getText();
+        senha = txtCriarSenhaUsuario.getText();
+
+        UsuarioDTO objusuariodto = new UsuarioDTO();
+        objusuariodto.setCriar_nome_usuario(nome);
+        objusuariodto.setCriar_senha_usuario(senha);
+
+        UsuarioDAO objusuariodao = new UsuarioDAO();
+        objusuariodao.cadastrarUsuario(objusuariodto);
+
+        //chamar tela principal
+        AppPrincipalVIEW objappprincipalview = new AppPrincipalVIEW();
+        objappprincipalview.setVisible(true);
+
+        dispose();
+
+    }
+
 }
