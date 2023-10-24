@@ -6,6 +6,7 @@ package VIEW;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -22,7 +23,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
      */
     public FormularioLoginVIEW() {
         initComponents();
-        hide.setVisible(false);
+        this.setTitle("App Clima");
+        setIconImage();
     }
 
     /**
@@ -35,25 +37,16 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         Usuario = new javax.swing.JLabel();
-        view = new javax.swing.JLabel();
         txtNomeUsuario = new javax.swing.JTextField();
         Senha = new javax.swing.JLabel();
         BtnLogin = new javax.swing.JButton();
         BtnCriarConta = new javax.swing.JButton();
         txtSenhaUsuario = new javax.swing.JPasswordField();
         checkSenhaLogin = new javax.swing.JCheckBox();
-        hide = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Usuario.setText("Nome de Usuario");
-
-        view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/view.png"))); // NOI18N
-        view.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                viewMousePressed(evt);
-            }
-        });
 
         txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,13 +93,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
 
-        hide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/hide.png"))); // NOI18N
-        hide.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                hideMousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,10 +117,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                                 .addComponent(Senha)
                                 .addComponent(Usuario)
                                 .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(view)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hide)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -147,11 +129,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Senha)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(view)
-                    .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hide))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(checkSenhaLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -188,29 +167,11 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
 
     private void checkSenhaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSenhaLoginActionPerformed
         if (checkSenhaLogin.isSelected()) {
-            hide.setVisible(true);
-            view.setVisible(false);
             txtSenhaUsuario.setEchoChar((char) 0);
         } else {
-            view.setVisible(true);
-            hide.setVisible(false);
             txtSenhaUsuario.setEchoChar('*');
         }
     }//GEN-LAST:event_checkSenhaLoginActionPerformed
-
-    private void viewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMousePressed
-        hide.setVisible(true);
-        view.setVisible(false);
-        checkSenhaLogin.setSelected(true);
-        txtSenhaUsuario.setEchoChar((char) 0);
-    }//GEN-LAST:event_viewMousePressed
-
-    private void hideMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMousePressed
-        view.setVisible(true);
-        hide.setVisible(false);
-        checkSenhaLogin.setSelected(false);
-        txtSenhaUsuario.setEchoChar('*');
-    }//GEN-LAST:event_hideMousePressed
 
     private void txtSenhaUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaUsuarioKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -267,10 +228,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel Senha;
     private javax.swing.JLabel Usuario;
     private javax.swing.JCheckBox checkSenhaLogin;
-    private javax.swing.JLabel hide;
     private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JPasswordField txtSenhaUsuario;
-    private javax.swing.JLabel view;
     // End of variables declaration//GEN-END:variables
 
     private void Logar() {
@@ -301,5 +260,9 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         } catch (SQLException error) {
             JOptionPane.showMessageDialog(null, "FormularioLoginVIEW: " + error);
         }
+    }
+    
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/VIEW/Assets/icons8-climate-64.png")));
     }
 }

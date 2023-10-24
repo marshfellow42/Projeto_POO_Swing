@@ -4,17 +4,61 @@
  */
 package VIEW;
 
+import PRIVATE.Painel_Pesquisa;
+import DTO.PesquisaDTO;
+import PRIVATE.EventClick;
+import java.awt.Component;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JPopupMenu;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mello
  */
 public class AppPrincipalVIEW extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AppPrincipal
-     */
+    private JPopupMenu menu;
+    private Painel_Pesquisa procura;
+
     public AppPrincipalVIEW() {
         initComponents();
+        this.setTitle("App Clima");
+        setIconImage();
+        connectToDatabase();
+        
+        menu = new JPopupMenu();
+        procura = new Painel_Pesquisa();
+        menu.add(procura);
+        menu.setFocusable(false);
+        procura.addEventClick(new EventClick() {
+            @Override
+            public void itemClick(PesquisaDTO objpesquisadto) {
+                menu.setVisible(false);
+                pesquisa.setText(objpesquisadto.getTexto());
+                addHistorico(objpesquisadto.getTexto());
+                System.out.println("Click item: " + objpesquisadto.getTexto());
+            }
+
+            @Override
+            public void itemRemove(Component com, PesquisaDTO objpesquisadto) {
+                procura.remove(com);
+                RemoveHistorico(objpesquisadto.getTexto());
+                menu.setPopupSize(menu.getWidth(), (procura.conseguirTamanhoItem() * 32) + 2);
+                if (procura.conseguirTamanhoItem() == 0) {
+                    menu.setVisible(false);
+                }
+                System.out.println("Remove Item: " + objpesquisadto.getTexto());
+            }
+        });
     }
 
     /**
@@ -27,30 +71,158 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        pesquisa = new PRIVATE.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Clima");
+
+        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search.png"))); // NOI18N
+        pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pesquisaMouseClicked(evt);
+            }
+        });
+        pesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pesquisaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesquisaKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jLabel1)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(jLabel1)
+                        .addContainerGap(188, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
+                .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pesquisaMouseClicked
+        if (procura.conseguirTamanhoItem() > 0) {
+            menu.show(pesquisa, 0, pesquisa.getHeight());
+            procura.clearSelected();
+        }
+    }//GEN-LAST:event_pesquisaMouseClicked
+
+    private void pesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisaKeyReleased
+        if (evt.getKeyCode() != KeyEvent.VK_UP && evt.getKeyCode() != KeyEvent.VK_DOWN && evt.getKeyCode() != KeyEvent.VK_ENTER) {
+            String text = pesquisa.getText().trim().toLowerCase();
+            procura.setPesquisa(procurar(text));
+            if (procura.conseguirTamanhoItem() > 0) {
+                menu.show(pesquisa, 0, pesquisa.getHeight());
+                menu.setPopupSize(menu.getWidth(), (procura.conseguirTamanhoItem() * 32) + 2);
+            } else {
+                menu.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_pesquisaKeyReleased
+
+    private void pesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            procura.keyUp();
+        } else if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            procura.keyDown();
+        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String texto = procura.getSelectedText();
+            pesquisa.setText(texto);
+            menu.setVisible(false);
+        }
+    }//GEN-LAST:event_pesquisaKeyPressed
+
+    private List<PesquisaDTO> procurar(String procurar) {
+        List<PesquisaDTO> list = new ArrayList<>();
+        try {
+            String sql = "select DISTINCT cidade, coalesce((select id_historico from historico where cidade=item_salvo limit 1),'') as historico from sugestoes where cidade like ? order by historico DESC, cidade limit 7";
+
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, "%" + procurar + "%");
+
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                String texto = rs.getString(1);
+                boolean historico = !rs.getString(2).equals("");
+                list.add(new PesquisaDTO(texto, historico));
+            }
+            rs.close();
+            pstm.close();
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
+            return null;
+        }
+        return list;
+    }
+
+    private void RemoveHistorico(String texto) {
+        try {
+            String sql = "delete from historico where item_salvo=? limit 1";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, texto);
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
+        }
+    }
+
+    private Connection conn;
+
+    private void connectToDatabase() {
+        try {
+            String url = "jdbc:mysql://localhost:3306/Project_Database?user=remote&password=login123";
+            conn = DriverManager.getConnection(url);
+
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
+        }
+    }
+
+    private void addHistorico(String texto) {
+        try {
+            boolean add = true;
+            String sql = "select id_historico from historico where item_salvo=? limit 1";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, texto);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.first()) {
+                add = false;
+            }
+            rs.close();
+            pstm.close();
+            if (add) {
+                String othersql = "insert into historico (item_salvo) values (?)";
+                pstm = conn.prepareStatement(othersql);
+                pstm.setString(1, texto);
+                pstm.execute();
+                pstm.close();
+            }
+
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -87,8 +259,13 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/VIEW/Assets/icons8-climate-64.png")));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private PRIVATE.TextField pesquisa;
     // End of variables declaration//GEN-END:variables
 }

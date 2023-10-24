@@ -74,7 +74,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="FormularioCriarContaVIEW" package="VIEW" visibility="public" xPosition="966.0" yPosition="20.0">
+    <Class name="FormularioCriarContaVIEW" package="VIEW" visibility="public" xPosition="941.0" yPosition="-44.0">
       <Fields>
         <Field name="btnCriarConta" type="javax.swing.JButton" visibility="private"/>
         <Field name="checkSenhaCriar" type="javax.swing.JCheckBox" visibility="private"/>

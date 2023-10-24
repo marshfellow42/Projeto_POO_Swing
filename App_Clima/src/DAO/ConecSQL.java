@@ -1,6 +1,5 @@
 package DAO;
 
-import API.Secret;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,7 +11,7 @@ public class ConecSQL {
         Connection conn = null;
 
         try {
-            String url = Secret.url;
+            String url = "jdbc:mysql://localhost:3306/Project_Database?user=remote&password=login123";
             conn = DriverManager.getConnection(url);
 
         } catch (SQLException error) {

@@ -6,7 +6,13 @@ package VIEW;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +25,8 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
      */
     public FormularioCriarContaVIEW() {
         initComponents();
-        hideCriar.setVisible(false);
+        this.setTitle("App Clima");
+        setIconImage();
     }
 
     /**
@@ -37,8 +44,6 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnCriarConta = new javax.swing.JButton();
         checkSenhaCriar = new javax.swing.JCheckBox();
-        viewCriar = new javax.swing.JLabel();
-        hideCriar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,20 +82,6 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
             }
         });
 
-        viewCriar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/view.png"))); // NOI18N
-        viewCriar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                viewCriarMousePressed(evt);
-            }
-        });
-
-        hideCriar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/hide.png"))); // NOI18N
-        hideCriar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                hideCriarMousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,34 +97,24 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(checkSenhaCriar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtCriarNomeUsuario)
-                                    .addComponent(txtCriarSenhaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(viewCriar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hideCriar)))))
-                .addContainerGap(112, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2)
+                                .addComponent(txtCriarNomeUsuario)
+                                .addComponent(txtCriarSenhaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCriarNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCriarSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewCriar)))
-                    .addComponent(hideCriar))
+                .addGap(51, 51, 51)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtCriarNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(txtCriarSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(checkSenhaCriar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
@@ -149,7 +130,7 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCriarNomeUsuarioActionPerformed
 
     private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
-        Criar();
+        Checar();
     }//GEN-LAST:event_btnCriarContaActionPerformed
 
     private void checkSenhaCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSenhaCriarActionPerformed
@@ -160,18 +141,6 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_checkSenhaCriarActionPerformed
 
-    private void viewCriarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCriarMousePressed
-        hideCriar.setVisible(true);
-        viewCriar.setVisible(false);
-        txtCriarSenhaUsuario.setEchoChar((char) 0);
-    }//GEN-LAST:event_viewCriarMousePressed
-
-    private void hideCriarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideCriarMousePressed
-        viewCriar.setVisible(true);
-        hideCriar.setVisible(false);
-        txtCriarSenhaUsuario.setEchoChar('*');
-    }//GEN-LAST:event_hideCriarMousePressed
-
     private void txtCriarNomeUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCriarNomeUsuarioKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtCriarSenhaUsuario.requestFocus();
@@ -180,7 +149,7 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
 
     private void txtCriarSenhaUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCriarSenhaUsuarioKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            Criar();
+            Checar();
         }
     }//GEN-LAST:event_txtCriarSenhaUsuarioKeyPressed
 
@@ -222,12 +191,10 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriarConta;
     private javax.swing.JCheckBox checkSenhaCriar;
-    private javax.swing.JLabel hideCriar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtCriarNomeUsuario;
     private javax.swing.JPasswordField txtCriarSenhaUsuario;
-    private javax.swing.JLabel viewCriar;
     // End of variables declaration//GEN-END:variables
 
     private void Criar() {
@@ -249,6 +216,30 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
 
         dispose();
 
+    }
+
+    private void Checar() {
+        try {
+            String nome = txtCriarNomeUsuario.getText();
+
+            UsuarioDTO objusuariodto = new UsuarioDTO();
+            objusuariodto.setCriar_nome_usuario(nome);
+
+            UsuarioDAO objusuariodao = new UsuarioDAO();
+            ResultSet rsusuariodao = objusuariodao.checarUsuarioExistente(objusuariodto);
+
+            if (rsusuariodao.next()) {
+                JOptionPane.showMessageDialog(null, "Esse usuario já existe");
+            } else {
+                Criar();
+            }
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "FormularioCriarContaVIEW: " + error);
+        }
+    }
+    
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/VIEW/Assets/icons8-climate-64.png")));
     }
 
 }

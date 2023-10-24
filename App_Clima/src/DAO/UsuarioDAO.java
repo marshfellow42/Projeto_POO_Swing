@@ -49,4 +49,23 @@ public class UsuarioDAO {
             JOptionPane.showMessageDialog(null, "UsuarioDAO (cadastrar)" + error);
         }
     }
+    
+    
+    public ResultSet checarUsuarioExistente(UsuarioDTO objusuariodto) {
+        conn = new ConecSQL().conectaBD();
+        
+        try {
+            String sql = "select * from usuario where nome_usuario = ?";
+            
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, objusuariodto.getCriar_nome_usuario());
+            
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+            
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "UsuarioDAO (checagem): " + error);
+            return null;
+        }
+    }
 }
