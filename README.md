@@ -9,3 +9,17 @@ Esse projeto é um trabalho do segundo semestre da disciplina de POO
 4.
 
 Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
+
+<details>
+<summary>FAQ</summary>
+
++ <details>
+  <summary>Como acessar nosso banco de dados?</summary>
+  1. Entre nesse <a href="phpmyadmin.co">site</a>
+  <br>
+  2. Na barra de host, digite: "sql10.freesqldatabase.com"
+  <br>
+  3. Na barra de usuário, digite: "sql10656686"
+  <br>
+  4. Na barra de senha, digite: "IrfCARGKYh"
+</details>
