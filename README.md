@@ -13,13 +13,8 @@ Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
 <details>
 <summary>FAQ</summary>
 
-+ <details>
-  <summary>Como acessar nosso banco de dados?</summary>
-  1. Entre nesse <a href="phpmyadmin.co">site</a>
-  <br>
-  2. Na barra de host, digite: "sql10.freesqldatabase.com"
-  <br>
-  3. Na barra de usuário, digite: "sql10656686"
-  <br>
-  4. Na barra de senha, digite: "IrfCARGKYh"
-</details>
+### Como acessar nosso banco de dados
+1. Entre nesse [site](phpmyadmin.co)
+2. Na barra de host, digite: "sql10.freesqldatabase.com"
+3. Na barra de usuário, digite: "sql10656686"
+4. Na barra de senha, digite: "IrfCARGKYh"
