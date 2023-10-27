@@ -6,7 +6,7 @@ Esse projeto é um trabalho do segundo semestre da disciplina de POO
 1. Leandro Candido - Banco de Dados
 2. Erick Carneiro
 3. Ana Lívia Oliveira Lima
-4.
+4. José Maia
 
 Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
 
