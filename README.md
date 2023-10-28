@@ -34,16 +34,15 @@ Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
   &nbsp &nbsp &nbsp 1. Faça um fork do nosso repositório
   <br>
   <p>&nbsp &nbsp &nbsp 2. Faça um "clone" dele no seu computador: "git clone https://github.com/(seu nome de usuario)/Projeto_POO_Swing.git"</p>
-  <b>&nbsp &nbsp &nbsp Depois de criar um clone</b>
+  <b>&nbsp &nbsp &nbsp Depois de fazer as suas alterações</b>
   <br>
-  <p>&nbsp &nbsp &nbsp 3. Entre na pasta onde tenha feito o fork e abra o git bash</p> 
-  <b>&nbsp &nbsp &nbsp Quando for fazer um push para o seu fork</b>
+  &nbsp &nbsp &nbsp 3. Entre na pasta onde tenha feito o fork e abra o git bash 
   <br>
   &nbsp &nbsp &nbsp 4. Adicione todos os arquivos modificados: "git add . && git status"
   <br>
   &nbsp &nbsp &nbsp 5. Faça um commit: "git commit"
   <br>
-  <p> &nbsp &nbsp &nbsp 6. Faça um push para a sua branch: "git push -u origin main"</p>
+  <p> &nbsp &nbsp &nbsp 6. Faça um push para o seu fork: "git push -u origin main"</p>
   <b>&nbsp &nbsp &nbsp Quando for fazer um pull request para a main</b>
   <br>
   &nbsp &nbsp &nbsp 6. Entre no repositório onde havia feito um fork
