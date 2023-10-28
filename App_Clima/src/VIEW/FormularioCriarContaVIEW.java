@@ -6,7 +6,9 @@ package VIEW;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +29,7 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         initComponents();
         this.setTitle("App Clima");
         setIconImage();
+        centreWindow(this);
     }
 
     /**
@@ -241,5 +244,11 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     private void setIconImage() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/VIEW/Assets/icons8-climate-64.png")));
     }
-
+    
+    private void centreWindow(Window frame) {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
+    }
 }

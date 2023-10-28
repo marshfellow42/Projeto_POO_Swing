@@ -8,8 +8,12 @@ import PRIVATE.Painel_Pesquisa;
 import DTO.PesquisaDTO;
 import PRIVATE.EventClick;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPopupMenu;
@@ -19,6 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -34,7 +39,8 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         this.setTitle("App Clima");
         setIconImage();
         connectToDatabase();
-        
+        centreWindow(this);
+
         menu = new JPopupMenu();
         procura = new Painel_Pesquisa();
         menu.add(procura);
@@ -72,6 +78,9 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         pesquisa = new PRIVATE.TextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuAbout = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +100,26 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 pesquisaKeyReleased(evt);
             }
         });
+
+        jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                jMenuBar1ComponentMoved(evt);
+            }
+        });
+
+        menuAbout.setText("Help");
+
+        jMenuItem1.setText("About");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuAbout.add(jMenuItem1);
+
+        jMenuBar1.add(menuAbout);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,7 +143,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,6 +180,16 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             menu.setVisible(false);
         }
     }//GEN-LAST:event_pesquisaKeyPressed
+
+    private void jMenuBar1ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuBar1ComponentMoved
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TermosdeServico termos = new TermosdeServico(); 
+        termos.setVisible(true);
+        termos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private List<PesquisaDTO> procurar(String procurar) {
         List<PesquisaDTO> list = new ArrayList<>();
@@ -259,13 +298,23 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void setIconImage() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/VIEW/Assets/icons8-climate-64.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu menuAbout;
     private PRIVATE.TextField pesquisa;
     // End of variables declaration//GEN-END:variables
+
+    private void centreWindow(Window frame) {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
+    }
 }
