@@ -33,7 +33,7 @@ Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
   <summary>Como criar um Pull Request?</summary>
   &nbsp &nbsp &nbsp 1. Faça um fork do nosso repositório
   <br>
-  <p>&nbsp &nbsp &nbsp 2. Faça um "clone" dele no seu computador: "git clone https://github.com/(seu nome de usuario)/Projeto_POO_Swing(ou outro nome que tenha colocado no seu fork).git"</p>
+  <p>&nbsp &nbsp &nbsp 2. Faça um "clone" dele no seu computador: "git clone https://github.com/(seu nome de usuario)/Projeto_POO_Swing.git"</p>
   <b>&nbsp &nbsp &nbsp Depois de criar um clone</b>
   <br>
   &nbsp &nbsp &nbsp 3. Entre na pasta onde tenha feito o fork e abra o git bash 
