@@ -26,7 +26,7 @@ Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
 
 + <details>
   <summary>Pra que criar um pull request ao invés de mandar tudo direto na Main como sempre?</summary>
-  &nbsp &nbsp &nbsp Para não ter problema na hora de mandar alguma mudança para o repositório principal
+  &nbsp &nbsp &nbsp Para não ter problema na hora de mandar alguma mudança para o repositório principal, sem que apague o progresso de outro membro, já que esse é um projeto de escala maior
   </details>
   
 + <details>
