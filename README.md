@@ -38,20 +38,17 @@ Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
   <br>
   &nbsp &nbsp &nbsp 3. Entre na pasta onde tenha feito o fork e abra o git bash 
   <br>
-  &nbsp &nbsp &nbsp 4. Crie uma nova branch com esse comando: "git checkout -b (nome da branch que você vai criar)"
+  <b>&nbsp &nbsp &nbsp Quando for fazer um push para o seu fork</b>
   <br>
-  <p>&nbsp &nbsp &nbsp 5. Depois, chame essa branch para a main do repositório principal: "git remote add upstream https://github.com/marshfellow42/Projeto_POO_Swing"</p>
-  <b>&nbsp &nbsp &nbsp Quando for fazer um push para a sua branch</b>
+  &nbsp &nbsp &nbsp 4. Adicione todos os arquivos modificados: "git add . && git status"
   <br>
-  &nbsp &nbsp &nbsp 6. Adicione todos os arquivos modificados: "git add . && git status"
+  &nbsp &nbsp &nbsp 5. Faça um commit: "git commit"
   <br>
-  &nbsp &nbsp &nbsp 7. Faça um commit: "git commit"
-  <br>
-  <p> &nbsp &nbsp &nbsp 8. Faça um push para a sua branch: "git push -u origin (nome da branch que você criou)"</p>
+  <p> &nbsp &nbsp &nbsp 6. Faça um push para a sua branch: "git push -u origin main"</p>
   <b>&nbsp &nbsp &nbsp Quando for fazer um pull request para a main</b>
   <br>
-  &nbsp &nbsp &nbsp 9. Entre no repositório onde havia feito um fork
+  &nbsp &nbsp &nbsp 6. Entre no repositório onde havia feito um fork
   <br>
-  &nbsp &nbsp &nbsp 10. Lá dentro vai aparecer algo como "Compare and Pull Request", lá você poderá fazer o pull request para o nosso repositório
+  &nbsp &nbsp &nbsp 7. Lá dentro vai aparecer algo como "Compare and Pull Request" ou "1 (ou mais) commits ahead", lá você poderá fazer o pull request para o nosso repositório
   </details>
 </details>
