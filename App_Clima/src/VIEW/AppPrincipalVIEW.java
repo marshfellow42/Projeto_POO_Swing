@@ -86,7 +86,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         jLabel1.setText("Clima");
 
-        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search.png"))); // NOI18N
+        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
         pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pesquisaMouseClicked(evt);
@@ -300,7 +300,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     }
 
     private void setIconImage() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/VIEW/Assets/icons8-climate-64.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icons8-climate-64.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

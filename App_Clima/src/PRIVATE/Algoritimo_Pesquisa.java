@@ -33,7 +33,7 @@ public class Algoritimo_Pesquisa extends javax.swing.JPanel {
         algori_pesq.setText(objpesquisadto.getTexto());
         if (objpesquisadto.isHistorico()) {
             algori_pesq.setForeground(new Color(29, 106, 205));
-            algori_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/time.png")));
+            algori_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/time.png")));
             algori_remove.setCursor(new Cursor(Cursor.HAND_CURSOR));
         } else {
             algori_remove.setText("");
@@ -79,7 +79,7 @@ public class Algoritimo_Pesquisa extends javax.swing.JPanel {
         algori_remove = new javax.swing.JLabel();
 
         algori_icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        algori_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search_small.png"))); // NOI18N
+        algori_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search_small.png"))); // NOI18N
 
         algori_pesq.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
