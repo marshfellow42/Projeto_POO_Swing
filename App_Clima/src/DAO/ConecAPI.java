@@ -9,5 +9,5 @@ package DAO;
  * @author Elenita
  */
 public class ConecAPI {
-    // http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid=39b4b8957534286d3d7a4a23f5bd3ee6
+    // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=39b4b8957534286d3d7a4a23f5bd3ee6
 }
