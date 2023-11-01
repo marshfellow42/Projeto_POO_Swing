@@ -51,6 +51,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 menu.setVisible(false);
                 pesquisa.setText(objpesquisadto.getTexto());
                 addHistorico(objpesquisadto.getTexto());
+                connectAPI(objpesquisadto.getTexto());
                 System.out.println("Click item: " + objpesquisadto.getTexto());
             }
 
@@ -245,7 +246,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, texto);
             ResultSet rs = pstm.executeQuery();
-            if (rs.first()) {
+            if (rs.next()) {
                 add = false;
             }
             rs.close();
@@ -258,6 +259,28 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 pstm.close();
             }
 
+        } catch (SQLException error) {
+            JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
+        }
+    }
+    
+    private void connectAPI(String texto) {
+        try {
+            String sql = "SELECT latitude, longitude FROM sugestoes WHERE cidade = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, texto);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                String lat = rs.getString("latitude");
+                String lon = rs.getString("longitude");
+                
+                String api = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br";
+                
+                System.out.println(api);
+            }
+            rs.close();
+            pstm.close();
+            
         } catch (SQLException error) {
             JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
         }
