@@ -19,9 +19,9 @@ Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
   <br>
   &nbsp &nbsp &nbsp 2. Na barra de host, digite: "sql10.freesqldatabase.com"
   <br>
-  &nbsp &nbsp &nbsp 3. Na barra de usuário, digite: "sql10659086"
+  &nbsp &nbsp &nbsp 3. Na barra de usuário, digite: "sql10656686"
   <br>
-  &nbsp &nbsp &nbsp 4. Na barra de senha, digite: "qi72hMs3kF"
+  &nbsp &nbsp &nbsp 4. Na barra de senha, digite: "IrfCARGKYh"
   </details>
 
 + <details>
