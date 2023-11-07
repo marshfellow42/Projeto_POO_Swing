@@ -231,7 +231,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
     private void connectToDatabase() {
         try {
-            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10656686?user=sql10656686&password=IrfCARGKYh";
+            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10659086?user=sql10659086&password=qi72hMs3kF";
             conn = DriverManager.getConnection(url);
 
         } catch (SQLException error) {
