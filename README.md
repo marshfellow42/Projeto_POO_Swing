@@ -28,14 +28,6 @@ Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
   <summary>Pra que criar um pull request ao invés de mandar tudo direto na Main como sempre?</summary>
   &nbsp &nbsp &nbsp Para não ter problema na hora de mandar alguma mudança para o repositório principal, sem que apague o progresso de outro membro, já que esse é um projeto de escala maior
   </details>
-<<<<<<< HEAD
-=======
-
-+ <details>
-  <summary>Por que eu (Leandro) vou continuar usando a Main?</summary>
-  &nbsp &nbsp &nbsp Pois já que eu tenho total controle do repositório, eu não preciso criar forks ou branches do meu próprio reposiório, além de que branches e pull requests de contas diferentes foram uma dor de cabeça para resolver, ainda assim não resolveu o problema por completo mas foi o suficiente para a minha situação
-  </details>
->>>>>>> 2c394d593cc32183ae978ce6d2bedd3cc4185fc3
   
 + <details>
   <summary>Como criar um Pull Request?</summary>
