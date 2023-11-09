@@ -62,7 +62,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 pesquisa.setText(objpesquisadto.getTexto());
                 addHistorico(objpesquisadto.getTexto());
                 connectAPI(objpesquisadto.getTexto());
-                System.out.println("Click item: " + objpesquisadto.getTexto());
             }
 
             @Override
@@ -73,7 +72,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 if (procura.conseguirTamanhoItem() == 0) {
                     menu.setVisible(false);
                 }
-                System.out.println("Remove Item: " + objpesquisadto.getTexto());
             }
         });
     }
@@ -95,7 +93,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search.png"))); // NOI18N
+        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
         pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pesquisaMouseClicked(evt);
@@ -285,13 +283,8 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             while (rs.next()) {
                 String lat = rs.getString("latitude");
                 String lon = rs.getString("longitude");
-
                 String api = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br";
-
-                System.out.println(api);
                 
-                System.out.println("");
-
                 URL url = null;
                 String json = null;
                 try {
@@ -307,7 +300,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 JSONObject object = new JSONObject(new JSONTokener(json));
                 double getTemp = object.getJSONObject("main").getDouble("temp");
                 int roundTemp = (int) Math.round(getTemp);
-                System.out.println("temp: " + roundTemp);
                 
                 temperatura.setText(roundTemp + "°C");
                 temperatura.setVisible(true);
