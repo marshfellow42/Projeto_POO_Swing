@@ -50,6 +50,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         connectToDatabase();
         centreWindow(this);
         temperatura.setVisible(false);
+        getIPGeo();
 
         menu = new JPopupMenu();
         procura = new Painel_Pesquisa();
@@ -271,9 +272,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
         }
     }
-    
-    
-    
+
     private void connectAPI(String texto) {
         try {
             String sql = "SELECT latitude, longitude FROM sugestoes WHERE cidade = ?";
@@ -284,7 +283,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 String lat = rs.getString("latitude");
                 String lon = rs.getString("longitude");
                 String api = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br";
-                
+
                 URL url = null;
                 String json = null;
                 try {
@@ -300,7 +299,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 JSONObject object = new JSONObject(new JSONTokener(json));
                 double getTemp = object.getJSONObject("main").getDouble("temp");
                 int roundTemp = (int) Math.round(getTemp);
-                
+
                 temperatura.setText(roundTemp + "°C");
                 temperatura.setVisible(true);
             }
@@ -309,6 +308,59 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         } catch (SQLException error) {
             JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
+        }
+    }
+
+    private void getIPGeo() {
+        try {
+            URL urlIP = new URL("http://httpbin.org/ip");
+            String jsonIP = null;
+            try {
+                jsonIP = IOUtils.toString(urlIP, "UTF-8");
+            } catch (IOException ex) {
+                Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JSONObject object = new JSONObject(new JSONTokener(jsonIP));
+            String getIP = object.getString("origin");
+
+            try {
+                URL geoIP = new URL("http://ip-api.com/json/" + getIP + "?fields=status,message,country,region,regionName,city,zip,lat,lon,timezone");
+                String jsonGeo = null;
+                try {
+                    jsonGeo = IOUtils.toString(geoIP, "UTF-8");
+                } catch (IOException ex) {
+                    Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JSONObject objectIP = new JSONObject(new JSONTokener(jsonGeo));
+                double lat = objectIP.getDouble("lat");
+                double lon = objectIP.getDouble("lon");
+
+                String api = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br";
+
+                try {
+                    URL urlAPI = new URL(api);
+                    try {
+                        String jsonAPI = null;
+                        jsonAPI = IOUtils.toString(urlAPI, "UTF-8");
+                        JSONObject objectAPI = new JSONObject(new JSONTokener(jsonAPI));
+                        double getTemp = objectAPI.getJSONObject("main").getDouble("temp");
+                        int roundTemp = (int) Math.round(getTemp);
+
+                        temperatura.setText(roundTemp + "°C");
+                        temperatura.setVisible(true);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
