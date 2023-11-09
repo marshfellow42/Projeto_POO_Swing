@@ -3,15 +3,17 @@
 Esse projeto é um trabalho do segundo semestre da disciplina de POO 
 
 ### Equipe
-1. Leandro Candido - Banco de Dados
-2. Erick Carneiro
-3. Ana Lívia Oliveira Lima
-4. José Maia
-
-Baixar o [Netbeans](https://netbeans.apache.org/download/nb19/)
+1. [Leandro Candido](https://github.com/marshfellow42) - Banco de Dados
+2. [Erick Carneiro](https://github.com/Asperaven)
+3. [Ana Lívia Oliveira Lima](https://github.com/livia0oliveira)
+4. [José Maia](https://github.com/JoseMaia07)
 
 <details>
   <summary>FAQ</summary>
+
++ <details>
+  <summary>Qual IDE nós usamos?</summary>
+  &nbsp &nbsp &nbsp Apache Netbeans </details>
   
 + <details>
   <summary>Como acessar nosso banco de dados?</summary>
