@@ -14,6 +14,9 @@ import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPopupMenu;
@@ -22,8 +25,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 /**
  *
@@ -40,6 +49,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         setIconImage();
         connectToDatabase();
         centreWindow(this);
+        temperatura.setVisible(false);
 
         menu = new JPopupMenu();
         procura = new Painel_Pesquisa();
@@ -77,17 +87,15 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         pesquisa = new PRIVATE.TextField();
+        temperatura = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAbout = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Clima");
-
-        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
+        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search.png"))); // NOI18N
         pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pesquisaMouseClicked(evt);
@@ -101,6 +109,10 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 pesquisaKeyReleased(evt);
             }
         });
+
+        temperatura.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        temperatura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        temperatura.setText(".");
 
         jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
@@ -128,23 +140,21 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel1)
-                        .addContainerGap(188, Short.MAX_VALUE))))
+                .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(179, 179, 179))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
         );
 
         pack();
@@ -187,7 +197,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuBar1ComponentMoved
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        TermosdeServico termos = new TermosdeServico(); 
+        TermosdeServico termos = new TermosdeServico();
         termos.setVisible(true);
         termos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -264,6 +274,8 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         }
     }
     
+    
+    
     private void connectAPI(String texto) {
         try {
             String sql = "SELECT latitude, longitude FROM sugestoes WHERE cidade = ?";
@@ -273,14 +285,36 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             while (rs.next()) {
                 String lat = rs.getString("latitude");
                 String lon = rs.getString("longitude");
-                
+
                 String api = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br";
-                
+
                 System.out.println(api);
+                
+                System.out.println("");
+
+                URL url = null;
+                String json = null;
+                try {
+                    url = new URL(api);
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    json = IOUtils.toString(url, "UTF-8");
+                } catch (IOException ex) {
+                    Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JSONObject object = new JSONObject(new JSONTokener(json));
+                double getTemp = object.getJSONObject("main").getDouble("temp");
+                int roundTemp = (int) Math.round(getTemp);
+                System.out.println("temp: " + roundTemp);
+                
+                temperatura.setText(roundTemp + "°C");
+                temperatura.setVisible(true);
             }
             rs.close();
             pstm.close();
-            
+
         } catch (SQLException error) {
             JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
         }
@@ -327,11 +361,11 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuAbout;
     private PRIVATE.TextField pesquisa;
+    private javax.swing.JLabel temperatura;
     // End of variables declaration//GEN-END:variables
 
     private void centreWindow(Window frame) {
