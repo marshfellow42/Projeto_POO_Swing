@@ -50,6 +50,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         connectToDatabase();
         centreWindow(this);
         temperatura.setVisible(false);
+        nomeCidade.setVisible(false);
         getIPGeo();
 
         menu = new JPopupMenu();
@@ -88,13 +89,14 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         pesquisa = new PRIVATE.TextField();
         temperatura = new javax.swing.JLabel();
+        nomeCidade = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAbout = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
+        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search.png"))); // NOI18N
         pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pesquisaMouseClicked(evt);
@@ -112,6 +114,10 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         temperatura.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         temperatura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         temperatura.setText(".");
+
+        nomeCidade.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        nomeCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nomeCidade.setText(".");
 
         jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
@@ -137,21 +143,27 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(179, 179, 179))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
@@ -240,7 +252,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
     private void connectToDatabase() {
         try {
-            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10659086?user=sql10659086&password=qi72hMs3kF";
+            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10660810?user=sql10660810&password=3B6vRgMH9n";
             conn = DriverManager.getConnection(url);
 
         } catch (SQLException error) {
@@ -302,6 +314,25 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
                 temperatura.setText(roundTemp + "°C");
                 temperatura.setVisible(true);
+
+                //Uso da API de localização
+                try {
+                    URL urlLoc = null;
+                    urlLoc = new URL("https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + lon + "&format=json&zoom=10");
+                    try {
+                        String jsonLoc = null;
+                        jsonLoc = IOUtils.toString(urlLoc, "UTF-8");
+                        JSONObject objectLoc = new JSONObject(new JSONTokener(jsonLoc));
+                        String getCity = objectLoc.getString("name");
+
+                        nomeCidade.setText(getCity);
+                        nomeCidade.setVisible(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             rs.close();
             pstm.close();
@@ -334,11 +365,13 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 JSONObject objectIP = new JSONObject(new JSONTokener(jsonGeo));
                 double lat = objectIP.getDouble("lat");
                 double lon = objectIP.getDouble("lon");
+                String city = objectIP.getString("city");
+                nomeCidade.setText(city);
+                nomeCidade.setVisible(true);
 
-                String api = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br";
-
+                // Uso da API de clima
                 try {
-                    URL urlAPI = new URL(api);
+                    URL urlAPI = new URL("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br");
                     try {
                         String jsonAPI = null;
                         jsonAPI = IOUtils.toString(urlAPI, "UTF-8");
@@ -408,6 +441,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuAbout;
+    private javax.swing.JLabel nomeCidade;
     private PRIVATE.TextField pesquisa;
     private javax.swing.JLabel temperatura;
     // End of variables declaration//GEN-END:variables
