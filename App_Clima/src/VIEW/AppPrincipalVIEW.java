@@ -96,7 +96,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search.png"))); // NOI18N
+        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
         pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pesquisaMouseClicked(evt);
