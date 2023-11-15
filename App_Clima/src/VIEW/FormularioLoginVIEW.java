@@ -13,6 +13,8 @@ import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import java.util.prefs.Preferences;
+
 
 /**
  *
@@ -23,12 +25,41 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     /**
      * Creates new form FormulárioLoginVIEW
      */
+    
+    private static final String PREFS_NODE_NAME = "/com/example/loginform";
+    private static final String REMEMBER_LOGIN_KEY = "rememberLogin";
+    
     public FormularioLoginVIEW() {
         initComponents();
         this.setTitle("App Clima");
         setIconImage();
         centreWindow(this);
+        loadPreferences();
     }
+    
+    private void loadPreferences() {
+        // Load preferences
+        Preferences prefs = Preferences.userRoot().node(PREFS_NODE_NAME);
+        lembrarLogin.setSelected(prefs.getBoolean(REMEMBER_LOGIN_KEY, false));
+
+        // If "Remember Login" is selected, load the username and password
+        if (lembrarLogin.isSelected()) {
+            txtNomeUsuario.setText(prefs.get("username", ""));
+            txtSenhaUsuario.setText(prefs.get("password", ""));
+        }
+    }
+
+    private void savePreferences() {
+        // Save preferences
+        Preferences prefs = Preferences.userRoot().node(PREFS_NODE_NAME);
+        prefs.putBoolean(REMEMBER_LOGIN_KEY, lembrarLogin.isSelected());
+
+        // If "Remember Login" is selected, save the username and password
+        if (lembrarLogin.isSelected()) {
+            prefs.put("username", txtNomeUsuario.getText());
+            prefs.put("password", new String(txtSenhaUsuario.getPassword()));
+        }
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +77,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         BtnCriarConta = new javax.swing.JButton();
         txtSenhaUsuario = new javax.swing.JPasswordField();
         checkSenhaLogin = new javax.swing.JCheckBox();
+        lembrarLogin = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +128,13 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
 
+        lembrarLogin.setText("Lembre de mim");
+        lembrarLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lembrarLoginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,6 +145,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(checkSenhaLogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lembrarLogin)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -134,7 +175,9 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(checkSenhaLogin)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkSenhaLogin)
+                    .addComponent(lembrarLogin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnLogin)
@@ -151,6 +194,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
         Logar();
+        savePreferences();
 
     }//GEN-LAST:event_BtnLoginActionPerformed
 
@@ -188,6 +232,10 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_txtNomeUsuarioKeyPressed
+
+    private void lembrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lembrarLoginActionPerformed
+
+    }//GEN-LAST:event_lembrarLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,6 +279,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel Senha;
     private javax.swing.JLabel Usuario;
     private javax.swing.JCheckBox checkSenhaLogin;
+    private javax.swing.JCheckBox lembrarLogin;
     private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JPasswordField txtSenhaUsuario;
     // End of variables declaration//GEN-END:variables
