@@ -29,6 +29,12 @@ Ou o Netbeans ou o Jar, mas com o JAR fica sem as bibliotecas
 - [HTTPBin](http://httpbin.org/ip)
 - [Nominatim OpenStreetMap](https://nominatim.org/release-docs/latest/api/Overview/)
 
+## Stack
+**Apache Netbeans**
+
+## Licenças
+![Licence](https://img.shields.io/badge/Licence-MIT-yellow)
+
 <details>
   <summary>FAQ</summary>
 
