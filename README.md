@@ -31,6 +31,7 @@ Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
 
 ## Stack
 **Apache Netbeans**
+
 **OpenJDK 17 (ou superior)**
 
 ## Licenças
