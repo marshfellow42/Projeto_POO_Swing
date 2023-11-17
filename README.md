@@ -15,7 +15,7 @@ O projeto é um aplicativo simples de clima
 Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
 
 ## Requerimentos
-**Java 17 (ou mais recente)**
+**Java 17 (ou superior)**
 ### Banco de Dados: 
 [FreeSQLDatabase](https://www.freesqldatabase.com/)
 ### Bibliotecas: 
@@ -31,6 +31,7 @@ Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
 
 ## Stack
 **Apache Netbeans**
+**OpenJDK 17 (ou superior)**
 
 ## Licenças
 ![Licence](https://img.shields.io/badge/Licence-MIT-yellow)
