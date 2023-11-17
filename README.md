@@ -8,6 +8,26 @@ Esse projeto é um trabalho do segundo semestre da disciplina de POO
 3. [Ana Lívia Oliveira Lima](https://github.com/livia0oliveira)
 4. [José Maia](https://github.com/JoseMaia07)
 
+## O que é o projeto
+O projeto é um aplicativo simples de clima
+
+## Como executar
+Ou o Netbeans ou o Jar, mas com o JAR fica sem as bibliotecas
+
+## Requerimentos
+##### Java 17 
+#### Banco de Dados:
+#### Bibliotecas: 
+- [MySQL Connector (Plataform Independent)](https://dev.mysql.com/downloads/connector/j/)
+- [Commons-IO](https://mvnrepository.com/artifact/commons-io/commons-io/2.15.0)
+- [Org-Json](https://mvnrepository.com/artifact/org.json/json/20231013)
+- MigLayout 4.0 (Preciso do link)
+#### API:
+- [OpenWeatherMap](https://openweathermap.org/current)
+- [IP-API](https://ip-api.com/docs/api:json)
+- [HTTPBin](http://httpbin.org/ip)
+- [Nominatim OpenStreetMap](https://nominatim.org/release-docs/latest/api/Overview/)
+
 <details>
   <summary>FAQ</summary>
 
