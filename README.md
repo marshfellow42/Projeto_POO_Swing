@@ -28,6 +28,7 @@ Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
 - [IP-API](https://ip-api.com/docs/api:json)
 - [HTTPBin](http://httpbin.org/ip)
 - [Nominatim OpenStreetMap](https://nominatim.org/release-docs/latest/api/Overview/)
+- [TimezoneDB](https://timezonedb.com/references/get-time-zone)
 
 ## Stack
 **Apache Netbeans**
