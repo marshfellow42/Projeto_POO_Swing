@@ -15,14 +15,15 @@ O projeto é um aplicativo simples de clima
 Ou o Netbeans ou o Jar, mas com o JAR fica sem as bibliotecas
 
 ## Requerimentos
-##### Java 17 
-#### Banco de Dados:
-#### Bibliotecas: 
+**Java 17 (ou mais recente)**
+### Banco de Dados: 
+[FreeSQLDatabase](https://www.freesqldatabase.com/)
+### Bibliotecas: 
 - [MySQL Connector (Plataform Independent)](https://dev.mysql.com/downloads/connector/j/)
 - [Commons-IO](https://mvnrepository.com/artifact/commons-io/commons-io/2.15.0)
 - [Org-Json](https://mvnrepository.com/artifact/org.json/json/20231013)
 - MigLayout 4.0 (Preciso do link)
-#### API:
+### API:
 - [OpenWeatherMap](https://openweathermap.org/current)
 - [IP-API](https://ip-api.com/docs/api:json)
 - [HTTPBin](http://httpbin.org/ip)
