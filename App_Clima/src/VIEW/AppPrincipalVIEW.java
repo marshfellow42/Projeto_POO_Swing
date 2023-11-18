@@ -14,6 +14,7 @@ import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,8 +26,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -45,12 +51,14 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
     public AppPrincipalVIEW() {
         initComponents();
-        this.setTitle("App Clima");
+        this.setTitle("Weathervane");
         setIconImage();
         connectToDatabase();
         centreWindow(this);
         temperatura.setVisible(false);
         nomeCidade.setVisible(false);
+        hora.setVisible(false);
+        icone.setVisible(false);
         getIPGeo();
 
         menu = new JPopupMenu();
@@ -90,13 +98,15 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         pesquisa = new PRIVATE.TextField();
         temperatura = new javax.swing.JLabel();
         nomeCidade = new javax.swing.JLabel();
+        hora = new javax.swing.JLabel();
+        icone = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAbout = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
+        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search.png"))); // NOI18N
         pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pesquisaMouseClicked(evt);
@@ -118,6 +128,13 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         nomeCidade.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         nomeCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nomeCidade.setText(".");
+
+        hora.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hora.setText(".");
+
+        icone.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        icone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
@@ -143,18 +160,23 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(icone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(temperatura, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                 .addGap(179, 179, 179))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,8 +184,12 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nomeCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
@@ -295,9 +321,11 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 String lat = rs.getString("latitude");
                 String lon = rs.getString("longitude");
                 String api = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br";
+                System.out.println(api);
 
                 URL url = null;
                 String json = null;
+
                 try {
                     url = new URL(api);
                 } catch (MalformedURLException ex) {
@@ -308,6 +336,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
                 JSONObject object = new JSONObject(new JSONTokener(json));
                 double getTemp = object.getJSONObject("main").getDouble("temp");
                 int roundTemp = (int) Math.round(getTemp);
@@ -315,24 +344,75 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 temperatura.setText(roundTemp + "°C");
                 temperatura.setVisible(true);
 
-                //Uso da API de localização
-                try {
-                    URL urlLoc = null;
-                    urlLoc = new URL("https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + lon + "&format=json&zoom=10");
-                    try {
-                        String jsonLoc = null;
-                        jsonLoc = IOUtils.toString(urlLoc, "UTF-8");
-                        JSONObject objectLoc = new JSONObject(new JSONTokener(jsonLoc));
-                        String getCity = objectLoc.getString("name");
+                String country = object.getJSONObject("sys").getString("country");
+                if (country.equals("JP")) {
+                    String nameCity = object.getString("name");
+                    nomeCidade.setText(nameCity);
+                    nomeCidade.setVisible(true);
 
-                        nomeCidade.setText(getCity);
-                        nomeCidade.setVisible(true);
+                } else {
+                    //Uso da API de localização
+                    try {
+                        URL urlLoc = null;
+                        urlLoc = new URL("https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + lon + "&format=json&zoom=10");
+                        System.out.println(urlLoc);
+                        try {
+                            String jsonLoc = null;
+                            jsonLoc = IOUtils.toString(urlLoc, "UTF-8");
+                            JSONObject objectLoc = new JSONObject(new JSONTokener(jsonLoc));
+                            String getCity = objectLoc.getString("name");
+
+                            nomeCidade.setText(getCity);
+                            nomeCidade.setVisible(true);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
+
+                // Colocar o ícone correspondente ao clima
+                String iconeCorres = object.getJSONArray("weather").getJSONObject(0).getString("icon");
+                URL iconeTemp = null;
+                try {
+                    iconeTemp = new URL("https://openweathermap.org/img/wn/" + iconeCorres + "@2x.png");
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                BufferedImage iconeLegivel = null;
+                try {
+                    iconeLegivel = ImageIO.read(iconeTemp);
+                } catch (IOException ex) {
+                    Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ImageIcon iconeVisivel = new ImageIcon(iconeLegivel);
+                icone.setIcon(iconeVisivel);
+                icone.setVisible(true);
+
+                // Colocar a hora atual
+                try {
+                    URL horaURL = new URL("https://api.opencagedata.com/geocode/v1/json?q=" + lat + "+" + lon + "&key=bd7b858ce7af4c2a96c17fbfb160e2ae");
+                    try {
+                        String jsonLoc = null;
+                        jsonLoc = IOUtils.toString(horaURL, "UTF-8");
+                        JSONObject objectLoc = new JSONObject(new JSONTokener(jsonLoc));
+                        String fetchData = objectLoc.getJSONArray("results").getJSONObject(0).getJSONObject("annotations").getJSONObject("timezone").getString("name");
+
+                        ZoneId fuso = ZoneId.of(fetchData);
+                        LocalDateTime horaAtual = LocalDateTime.now(fuso);
+                        DateTimeFormatter formatado = DateTimeFormatter.ofPattern("HH:mm");
+                        String horario = horaAtual.format(formatado);
+
+                        hora.setText(horario);
+                        hora.setVisible(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
             rs.close();
             pstm.close();
@@ -376,11 +456,27 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                         String jsonAPI = null;
                         jsonAPI = IOUtils.toString(urlAPI, "UTF-8");
                         JSONObject objectAPI = new JSONObject(new JSONTokener(jsonAPI));
+
                         double getTemp = objectAPI.getJSONObject("main").getDouble("temp");
                         int roundTemp = (int) Math.round(getTemp);
 
                         temperatura.setText(roundTemp + "°C");
                         temperatura.setVisible(true);
+
+                        // Colocar a hora atual
+                        LocalDateTime horaAtual = LocalDateTime.now();
+                        DateTimeFormatter formatado = DateTimeFormatter.ofPattern("HH:mm");
+                        String horario = horaAtual.format(formatado);
+                        hora.setText(horario);
+                        hora.setVisible(true);
+
+                        // Colocar o ícone correspondente ao clima
+                        String iconeCorres = objectAPI.getJSONArray("weather").getJSONObject(0).getString("icon");
+                        URL iconeTemp = new URL("https://openweathermap.org/img/wn/" + iconeCorres + "@2x.png");
+                        BufferedImage iconeLegivel = ImageIO.read(iconeTemp);
+                        ImageIcon iconeVisivel = new ImageIcon(iconeLegivel);
+                        icone.setIcon(iconeVisivel);
+                        icone.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -438,6 +534,8 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hora;
+    private javax.swing.JLabel icone;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuAbout;

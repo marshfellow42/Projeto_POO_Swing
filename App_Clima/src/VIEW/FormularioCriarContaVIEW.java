@@ -27,7 +27,7 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
      */
     public FormularioCriarContaVIEW() {
         initComponents();
-        this.setTitle("App Clima");
+        this.setTitle("Weathervane");
         setIconImage();
         centreWindow(this);
     }

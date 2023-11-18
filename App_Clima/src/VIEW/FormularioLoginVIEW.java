@@ -31,7 +31,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     
     public FormularioLoginVIEW() {
         initComponents();
-        this.setTitle("App Clima");
+        this.setTitle("Weathervane");
         setIconImage();
         centreWindow(this);
         loadPreferences();

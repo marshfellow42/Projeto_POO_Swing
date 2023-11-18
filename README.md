@@ -19,16 +19,16 @@ Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
 ### Banco de Dados: 
 [FreeSQLDatabase](https://www.freesqldatabase.com/)
 ### Bibliotecas: 
-- [MySQL Connector (Plataform Independent)](https://dev.mysql.com/downloads/connector/j/)
+- [MySQL Connector (Platform Independent)](https://dev.mysql.com/downloads/connector/j/)
 - [Commons-IO](https://mvnrepository.com/artifact/commons-io/commons-io/2.15.0)
 - [Org-Json](https://mvnrepository.com/artifact/org.json/json/20231013)
-- MigLayout 4.0 (Preciso do link)
+- [MigLayout 4.0](https://mvnrepository.com/artifact/com.miglayout/miglayout-swing)
 ### API:
 - [OpenWeatherMap](https://openweathermap.org/current)
 - [IP-API](https://ip-api.com/docs/api:json)
 - [HTTPBin](http://httpbin.org/ip)
 - [Nominatim OpenStreetMap](https://nominatim.org/release-docs/latest/api/Overview/)
-- [TimezoneDB](https://timezonedb.com/references/get-time-zone)
+- [OpenCageData](https://opencagedata.com/api)
 
 ## Stack
 **Apache Netbeans**
@@ -36,7 +36,7 @@ Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
 **OpenJDK 17 (ou superior)**
 
 ## Licenças
-![Licence](https://img.shields.io/badge/Licence-MIT-yellow)
+![Licence](https://img.shields.io/badge/Licença-MIT-yellow)
 
 <details>
   <summary>FAQ</summary>
