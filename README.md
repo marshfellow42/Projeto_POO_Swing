@@ -3,7 +3,7 @@
 Esse projeto é um trabalho do segundo semestre da disciplina de POO 
 
 ### Equipe
-1. [Leandro Candido](https://github.com/marshfellow42) - Banco de Dados
+1. [Leandro Candido](https://github.com/marshfellow42) - Tech Lead Full Stack
 2. [Erick Carneiro](https://github.com/Asperaven)
 3. [Ana Lívia Oliveira Lima](https://github.com/livia0oliveira)
 4. [José Maia](https://github.com/JoseMaia07)
