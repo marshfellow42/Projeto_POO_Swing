@@ -7,6 +7,7 @@ package VIEW;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.util.prefs.Preferences;
+import javax.swing.WindowConstants;
 
 
 /**
@@ -46,6 +48,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         if (lembrarLogin.isSelected()) {
             txtNomeUsuario.setText(prefs.get("username", ""));
             txtSenhaUsuario.setText(prefs.get("password", ""));
+            Logar();
+            this.setState(Frame.ICONIFIED);
         }
     }
 
@@ -204,7 +208,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
 
     private void BtnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCriarContaActionPerformed
 
-        //chamar tela principal
+        //chamar tela de criar conta
         FormularioCriarContaVIEW objcriarcontaview = new FormularioCriarContaVIEW();
         objcriarcontaview.setVisible(true);
 

@@ -4,6 +4,7 @@
  */
 package VIEW;
 
+import VIEW.ConfigAparencia;
 import PRIVATE.Painel_Pesquisa;
 import DTO.PesquisaDTO;
 import PRIVATE.EventClick;
@@ -101,8 +102,10 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         hora = new javax.swing.JLabel();
         icone = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        botaoAparencia = new javax.swing.JMenuItem();
         menuAbout = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        botaoSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,15 +145,27 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             }
         });
 
-        menuAbout.setText("Help");
+        jMenu1.setText("Settings");
 
-        jMenuItem1.setText("About");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        botaoAparencia.setText("Appeareance");
+        botaoAparencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                botaoAparenciaActionPerformed(evt);
             }
         });
-        menuAbout.add(jMenuItem1);
+        jMenu1.add(botaoAparencia);
+
+        jMenuBar1.add(jMenu1);
+
+        menuAbout.setText("Help");
+
+        botaoSobre.setText("About");
+        botaoSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSobreActionPerformed(evt);
+            }
+        });
+        menuAbout.add(botaoSobre);
 
         jMenuBar1.add(menuAbout);
 
@@ -167,16 +182,13 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                         .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(icone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(temperatura, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
-                .addGap(179, 179, 179))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +238,8 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             String texto = procura.getSelectedText();
             pesquisa.setText(texto);
             menu.setVisible(false);
+            addHistorico(texto);
+            connectAPI(texto);
         }
     }//GEN-LAST:event_pesquisaKeyPressed
 
@@ -233,11 +247,17 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1ComponentMoved
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void botaoSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSobreActionPerformed
         TermosdeServico termos = new TermosdeServico();
         termos.setVisible(true);
         termos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_botaoSobreActionPerformed
+
+    private void botaoAparenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAparenciaActionPerformed
+        ConfigAparencia appearance = new ConfigAparencia();
+        appearance.setVisible(true);
+        appearance.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_botaoAparenciaActionPerformed
 
     private List<PesquisaDTO> procurar(String procurar) {
         List<PesquisaDTO> list = new ArrayList<>();
@@ -321,7 +341,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 String lat = rs.getString("latitude");
                 String lon = rs.getString("longitude");
                 String api = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39b4b8957534286d3d7a4a23f5bd3ee6&units=metric&lang=pt_br";
-                System.out.println(api);
 
                 URL url = null;
                 String json = null;
@@ -355,7 +374,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                     try {
                         URL urlLoc = null;
                         urlLoc = new URL("https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + lon + "&format=json&zoom=10");
-                        System.out.println(urlLoc);
                         try {
                             String jsonLoc = null;
                             jsonLoc = IOUtils.toString(urlLoc, "UTF-8");
@@ -534,10 +552,12 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem botaoAparencia;
+    private javax.swing.JMenuItem botaoSobre;
     private javax.swing.JLabel hora;
     private javax.swing.JLabel icone;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuAbout;
     private javax.swing.JLabel nomeCidade;
     private PRIVATE.TextField pesquisa;

@@ -3,7 +3,7 @@
 Esse projeto é um trabalho do segundo semestre da disciplina de POO 
 
 ### Equipe
-1. [Leandro Candido](https://github.com/marshfellow42) - Tech Lead Full Stack
+1. [Leandro Candido](https://github.com/marshfellow42) - Lead Full Stack Dev
 2. [Erick Carneiro](https://github.com/Asperaven)
 3. [Ana Lívia Oliveira Lima](https://github.com/livia0oliveira)
 4. [José Maia](https://github.com/JoseMaia07)
@@ -31,9 +31,11 @@ Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
 - [OpenCageData](https://opencagedata.com/api)
 
 ## Stack
-**Apache Netbeans**
+**Apache Netbeans 19**
 
 **OpenJDK 17 (ou superior)**
+
+**MySQL**
 
 ## Licenças
 ![Licence](https://img.shields.io/badge/Licença-MIT-yellow)
