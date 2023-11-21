@@ -56,10 +56,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         setIconImage();
         connectToDatabase();
         centreWindow(this);
-        temperatura.setVisible(false);
-        nomeCidade.setVisible(false);
-        hora.setVisible(false);
-        icone.setVisible(false);
         getIPGeo();
 
         menu = new JPopupMenu();
@@ -101,6 +97,13 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         nomeCidade = new javax.swing.JLabel();
         hora = new javax.swing.JLabel();
         icone = new javax.swing.JLabel();
+        descricao = new javax.swing.JLabel();
+        iconAgua = new javax.swing.JLabel();
+        iconVento = new javax.swing.JLabel();
+        humidade = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        JLabel3 = new javax.swing.JLabel();
+        ventania = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         botaoAparencia = new javax.swing.JMenuItem();
@@ -138,6 +141,30 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         icone.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         icone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        descricao.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        descricao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        descricao.setText(".");
+
+        iconAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconAgua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-water-64.png"))); // NOI18N
+
+        iconVento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-wind-48.png"))); // NOI18N
+
+        humidade.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        humidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        humidade.setText(".");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Vento:");
+
+        JLabel3.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        JLabel3.setText("Humidade:");
+
+        ventania.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        ventania.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ventania.setText(".");
 
         jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
@@ -179,16 +206,38 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))
+                        .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(iconAgua, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(JLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(humidade, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(iconVento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(ventania, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,11 +248,25 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nomeCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(iconAgua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconVento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(JLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(humidade))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ventania)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -357,17 +420,35 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 }
 
                 JSONObject object = new JSONObject(new JSONTokener(json));
+
+                // Conseguir temperatura
                 double getTemp = object.getJSONObject("main").getDouble("temp");
                 int roundTemp = (int) Math.round(getTemp);
 
                 temperatura.setText(roundTemp + "°C");
-                temperatura.setVisible(true);
 
+                // Descrição da temperatura
+                String getTempDesc = object.getJSONArray("weather").getJSONObject(0).getString("description");
+                String setTempDesc = capitalizeWords(getTempDesc);
+
+                descricao.setText(setTempDesc);
+
+                // Porcentagem da humidade
+                int getHumid = object.getJSONObject("main").getInt("humidity");
+
+                humidade.setText(getHumid + "%");
+
+                // Velocidade do vento
+                double getWind = object.getJSONObject("wind").getDouble("speed");
+                int roundWind = (int) Math.round(getWind);
+
+                ventania.setText(roundWind + " m/s");
+
+                // Nome da cidade
                 String country = object.getJSONObject("sys").getString("country");
                 if (country.equals("JP")) {
                     String nameCity = object.getString("name");
                     nomeCidade.setText(nameCity);
-                    nomeCidade.setVisible(true);
 
                 } else {
                     //Uso da API de localização
@@ -381,7 +462,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                             String getCity = objectLoc.getString("name");
 
                             nomeCidade.setText(getCity);
-                            nomeCidade.setVisible(true);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -406,7 +486,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 }
                 ImageIcon iconeVisivel = new ImageIcon(iconeLegivel);
                 icone.setIcon(iconeVisivel);
-                icone.setVisible(true);
 
                 // Colocar a hora atual
                 try {
@@ -423,7 +502,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                         String horario = horaAtual.format(formatado);
 
                         hora.setText(horario);
-                        hora.setVisible(true);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -465,7 +543,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 double lon = objectIP.getDouble("lon");
                 String city = objectIP.getString("city");
                 nomeCidade.setText(city);
-                nomeCidade.setVisible(true);
 
                 // Uso da API de clima
                 try {
@@ -475,18 +552,34 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                         jsonAPI = IOUtils.toString(urlAPI, "UTF-8");
                         JSONObject objectAPI = new JSONObject(new JSONTokener(jsonAPI));
 
+                        // Número da temperatura
                         double getTemp = objectAPI.getJSONObject("main").getDouble("temp");
                         int roundTemp = (int) Math.round(getTemp);
 
                         temperatura.setText(roundTemp + "°C");
-                        temperatura.setVisible(true);
+
+                        // Descrição do Clima Atual
+                        String getTempDesc = objectAPI.getJSONArray("weather").getJSONObject(0).getString("description");
+                        String setTempDesc = capitalizeWords(getTempDesc);
+
+                        descricao.setText(setTempDesc);
+
+                        // Porcentagem da humidade
+                        int getHumid = objectAPI.getJSONObject("main").getInt("humidity");
+
+                        humidade.setText(getHumid + "%");
+
+                        // Velocidade do vento
+                        double getWind = objectAPI.getJSONObject("wind").getDouble("speed");
+                        int roundWind = (int) Math.round(getWind);
+
+                        ventania.setText(roundWind + " m/s");
 
                         // Colocar a hora atual
                         LocalDateTime horaAtual = LocalDateTime.now();
                         DateTimeFormatter formatado = DateTimeFormatter.ofPattern("HH:mm");
                         String horario = horaAtual.format(formatado);
                         hora.setText(horario);
-                        hora.setVisible(true);
 
                         // Colocar o ícone correspondente ao clima
                         String iconeCorres = objectAPI.getJSONArray("weather").getJSONObject(0).getString("icon");
@@ -494,7 +587,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                         BufferedImage iconeLegivel = ImageIO.read(iconeTemp);
                         ImageIcon iconeVisivel = new ImageIcon(iconeLegivel);
                         icone.setIcon(iconeVisivel);
-                        icone.setVisible(true);
+
                     } catch (IOException ex) {
                         Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -552,16 +645,23 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLabel3;
     private javax.swing.JMenuItem botaoAparencia;
     private javax.swing.JMenuItem botaoSobre;
+    private javax.swing.JLabel descricao;
     private javax.swing.JLabel hora;
+    private javax.swing.JLabel humidade;
+    private javax.swing.JLabel iconAgua;
+    private javax.swing.JLabel iconVento;
     private javax.swing.JLabel icone;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuAbout;
     private javax.swing.JLabel nomeCidade;
     private PRIVATE.TextField pesquisa;
     private javax.swing.JLabel temperatura;
+    private javax.swing.JLabel ventania;
     // End of variables declaration//GEN-END:variables
 
     private void centreWindow(Window frame) {
@@ -569,5 +669,22 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
+    }
+
+    public static String capitalizeWords(String input) {
+        // Split the input string into words
+        String[] words = input.split(" ");
+
+        // Capitalize the first letter of each word
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() > 0) {  // Check if the word is not empty
+                words[i] = words[i].substring(0, 1).toUpperCase() + words[i].substring(1).toLowerCase();
+            }
+        }
+
+        // Join the words back into a string
+        String result = String.join(" ", words);
+
+        return result;
     }
 }
