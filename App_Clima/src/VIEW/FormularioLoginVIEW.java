@@ -6,15 +6,18 @@ package VIEW;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.util.prefs.Preferences;
+import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 
@@ -33,6 +36,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     
     public FormularioLoginVIEW() {
         initComponents();
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setTitle("Weathervane");
         setIconImage();
         centreWindow(this);
@@ -49,7 +53,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             txtNomeUsuario.setText(prefs.get("username", ""));
             txtSenhaUsuario.setText(prefs.get("password", ""));
             Logar();
-            this.setState(Frame.ICONIFIED);
+            closeFrame(this);
+            //this.setState(Frame.ICONIFIED);
         }
     }
 
@@ -82,6 +87,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         txtSenhaUsuario = new javax.swing.JPasswordField();
         checkSenhaLogin = new javax.swing.JCheckBox();
         lembrarLogin = new javax.swing.JCheckBox();
+        esqueci = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +145,20 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
 
+        esqueci.setForeground(new java.awt.Color(0, 153, 255));
+        esqueci.setText("Esqueci a Senha");
+        esqueci.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                esqueciMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                esqueciMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                esqueciMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,9 +182,13 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Senha)
                                 .addComponent(Usuario)
-                                .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(Senha)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(esqueci))
+                                    .addComponent(txtNomeUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -175,8 +199,13 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Senha)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Senha)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(esqueci)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -241,6 +270,21 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lembrarLoginActionPerformed
 
+    private void esqueciMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esqueciMouseClicked
+        EsqueceuSenha forgor = new EsqueceuSenha();
+        forgor.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_esqueciMouseClicked
+
+    private void esqueciMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esqueciMouseEntered
+        esqueci.setForeground(Color.gray);
+    }//GEN-LAST:event_esqueciMouseEntered
+
+    private void esqueciMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esqueciMouseExited
+        Color color = new Color(0,153,255);
+        esqueci.setForeground(color);
+    }//GEN-LAST:event_esqueciMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -283,6 +327,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel Senha;
     private javax.swing.JLabel Usuario;
     private javax.swing.JCheckBox checkSenhaLogin;
+    private javax.swing.JLabel esqueci;
     private javax.swing.JCheckBox lembrarLogin;
     private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JPasswordField txtSenhaUsuario;
@@ -327,5 +372,10 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
+    }
+    
+    private static void closeFrame(JFrame frame) {
+        WindowEvent windowClosing = new WindowEvent(frame, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(windowClosing);
     }
 }
