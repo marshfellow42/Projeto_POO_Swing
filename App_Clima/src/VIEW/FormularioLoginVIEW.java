@@ -54,7 +54,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             txtSenhaUsuario.setText(prefs.get("password", ""));
             Logar();
             closeFrame(this);
-            //this.setState(Frame.ICONIFIED);
         }
     }
 
@@ -328,7 +327,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario;
     private javax.swing.JCheckBox checkSenhaLogin;
     private javax.swing.JLabel esqueci;
-    private javax.swing.JCheckBox lembrarLogin;
+    public javax.swing.JCheckBox lembrarLogin;
     private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JPasswordField txtSenhaUsuario;
     // End of variables declaration//GEN-END:variables

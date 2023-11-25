@@ -13,8 +13,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,12 +32,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.openstreetmap.gui.jmapviewer.Coordinate;
+import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 
 /**
  *
@@ -57,6 +56,8 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         connectToDatabase();
         centreWindow(this);
         getIPGeo();
+        mudarTemp(selecTemp);
+        mudarVento(selecMed);
 
         menu = new JPopupMenu();
         procura = new Painel_Pesquisa();
@@ -92,6 +93,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         pesquisa = new PRIVATE.TextField();
         temperatura = new javax.swing.JLabel();
         nomeCidade = new javax.swing.JLabel();
@@ -104,15 +106,17 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         JLabel3 = new javax.swing.JLabel();
         ventania = new javax.swing.JLabel();
+        jMapViewer1 = new org.openstreetmap.gui.jmapviewer.JMapViewer();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         botaoAparencia = new javax.swing.JMenuItem();
         menuAbout = new javax.swing.JMenu();
         botaoSobre = new javax.swing.JMenuItem();
+        exitBtn = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/Assets/search.png"))); // NOI18N
+        pesquisa.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
         pesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pesquisaMouseClicked(evt);
@@ -166,6 +170,81 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         ventania.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ventania.setText(".");
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(iconVento)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(ventania, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jMapViewer1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(iconAgua, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(JLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(humidade, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nomeCidade))
+                .addGap(40, 40, 40)
+                .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(iconAgua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconVento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(JLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(humidade))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ventania)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jMapViewer1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         jMenuBar1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
                 jMenuBar1ComponentMoved(evt);
@@ -196,77 +275,31 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         jMenuBar1.add(menuAbout);
 
+        exitBtn.setText("Exit");
+        exitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitBtnMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(exitBtn);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(iconAgua, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(humidade, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(iconVento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(ventania, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nomeCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
-                .addComponent(icone, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(iconAgua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(iconVento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(JLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(humidade))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ventania)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -322,6 +355,16 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         appearance.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_botaoAparenciaActionPerformed
 
+    private void exitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseClicked
+        FormularioLoginVIEW login = new FormularioLoginVIEW();
+        login.lembrarLogin.setSelected(false);
+        login.setVisible(true);
+        // One step at a time
+
+        dispose();
+
+    }//GEN-LAST:event_exitBtnMouseClicked
+
     private List<PesquisaDTO> procurar(String procurar) {
         List<PesquisaDTO> list = new ArrayList<>();
         try {
@@ -361,7 +404,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
     private void connectToDatabase() {
         try {
-            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10663137?user=sql10663137&password=LWxSrSziSd";
+            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10665025?user=sql10665025&password=awsy9EQLBk";
             conn = DriverManager.getConnection(url);
 
         } catch (SQLException error) {
@@ -394,6 +437,15 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         }
     }
 
+    ConfigAparencia appearance = new ConfigAparencia();
+    String seleCor = appearance.selecaoCores.getSelectedItem().toString();
+    String selecMed = appearance.jComboBox1.getSelectedItem().toString();
+    String selecTemp = appearance.jComboBox3.getSelectedItem().toString();
+
+    // Variáveis globais
+    int roundTemp = 0;
+    int roundWind = 0;
+
     private void connectAPI(String texto) {
         try {
             String sql = "SELECT latitude, longitude FROM sugestoes WHERE cidade = ?";
@@ -423,7 +475,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
                 // Conseguir temperatura
                 double getTemp = object.getJSONObject("main").getDouble("temp");
-                int roundTemp = (int) Math.round(getTemp);
+                roundTemp = (int) Math.round(getTemp);
 
                 temperatura.setText(roundTemp + "°C");
 
@@ -440,21 +492,25 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
                 // Velocidade do vento
                 double getWind = object.getJSONObject("wind").getDouble("speed");
-                int roundWind = (int) Math.round(getWind);
+                roundWind = (int) Math.round(getWind);
 
                 ventania.setText(roundWind + " m/s");
 
                 // Nome da cidade
                 String country = object.getJSONObject("sys").getString("country");
-                if (country.equals("JP")) {
+                if (country.equals("JP") || country.equals("CN")) {
                     String nameCity = object.getString("name");
                     nomeCidade.setText(nameCity);
 
                 } else {
                     //Uso da API de localização
                     try {
+                        String newLat = lat.replace(",", ".");
+                        String newLon = lon.replace(",", ".");
+                        double lati = Double.parseDouble(newLat);
+                        double longi = Double.parseDouble(newLon);
                         URL urlLoc = null;
-                        urlLoc = new URL("https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + lon + "&format=json&zoom=10");
+                        urlLoc = new URL("https://nominatim.openstreetmap.org/reverse?lat=" + newLat + "&lon=" + newLon + "&format=json&zoom=10");
                         try {
                             String jsonLoc = null;
                             jsonLoc = IOUtils.toString(urlLoc, "UTF-8");
@@ -509,6 +565,16 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                     Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
+                // Colocar o lugar correspondente no mapa
+                String newLat = lat.replace(",", ".");
+                String newLon = lon.replace(",", ".");
+                double lati = Double.parseDouble(newLat);
+                double longi = Double.parseDouble(newLon);
+                Coordinate coordinate = new Coordinate(lati, longi);
+                MapMarkerDot marker = new MapMarkerDot(coordinate);
+                jMapViewer1.setDisplayPosition(coordinate, 8);
+                jMapViewer1.addMapMarker(marker);
+
             }
             rs.close();
             pstm.close();
@@ -516,6 +582,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         } catch (SQLException error) {
             JOptionPane.showMessageDialog(null, "AppPrincipalVIEW: " + error);
         }
+
     }
 
     private void getIPGeo() {
@@ -552,9 +619,9 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                         jsonAPI = IOUtils.toString(urlAPI, "UTF-8");
                         JSONObject objectAPI = new JSONObject(new JSONTokener(jsonAPI));
 
-                        // Número da temperatura
+                        // Conseguir temperatura
                         double getTemp = objectAPI.getJSONObject("main").getDouble("temp");
-                        int roundTemp = (int) Math.round(getTemp);
+                        roundTemp = (int) Math.round(getTemp);
 
                         temperatura.setText(roundTemp + "°C");
 
@@ -571,7 +638,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
                         // Velocidade do vento
                         double getWind = objectAPI.getJSONObject("wind").getDouble("speed");
-                        int roundWind = (int) Math.round(getWind);
+                        roundWind = (int) Math.round(getWind);
 
                         ventania.setText(roundWind + " m/s");
 
@@ -588,6 +655,12 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                         ImageIcon iconeVisivel = new ImageIcon(iconeLegivel);
                         icone.setIcon(iconeVisivel);
 
+                        // Colocar o lugar correspondente no mapa
+                        Coordinate coordinate = new Coordinate(lat, lon);
+                        MapMarkerDot marker = new MapMarkerDot(coordinate);
+                        jMapViewer1.setDisplayPosition(coordinate, 8);
+                        jMapViewer1.addMapMarker(marker);
+
                     } catch (IOException ex) {
                         Logger.getLogger(AppPrincipalVIEW.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -601,6 +674,33 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void mudarTemp(String unidadeMedida) {
+        switch (unidadeMedida) {
+            case "°C":
+                temperatura.setText(roundTemp + "°C");
+                break;
+            case "°F":
+                int newTempF = (int) (roundTemp * 1.8 + 32);
+                temperatura.setText(newTempF + " °F");
+                break;
+            case "°K":
+                int newTempK = (int) (roundTemp + 273.15);
+                temperatura.setText(newTempK + " °K");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void mudarVento(String unidadeVento) {
+        if (unidadeVento.equals("m/s")) {
+            ventania.setText(roundWind + " m/s");
+        } else if (unidadeVento.equals("Km/h")) {
+            int newRoundWind = (int) (roundWind * 3.6);
+            ventania.setText(newRoundWind + " Km/h");
         }
     }
 
@@ -649,19 +749,22 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JMenuItem botaoAparencia;
     private javax.swing.JMenuItem botaoSobre;
     private javax.swing.JLabel descricao;
+    private javax.swing.JMenu exitBtn;
     private javax.swing.JLabel hora;
     private javax.swing.JLabel humidade;
     private javax.swing.JLabel iconAgua;
     private javax.swing.JLabel iconVento;
     private javax.swing.JLabel icone;
     private javax.swing.JLabel jLabel3;
+    private org.openstreetmap.gui.jmapviewer.JMapViewer jMapViewer1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menuAbout;
     private javax.swing.JLabel nomeCidade;
     private PRIVATE.TextField pesquisa;
     private javax.swing.JLabel temperatura;
-    private javax.swing.JLabel ventania;
+    public javax.swing.JLabel ventania;
     // End of variables declaration//GEN-END:variables
 
     private void centreWindow(Window frame) {

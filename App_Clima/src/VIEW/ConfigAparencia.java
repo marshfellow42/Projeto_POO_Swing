@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
+import java.awt.event.ItemEvent;
 
 /**
  *
@@ -20,6 +21,12 @@ public class ConfigAparencia extends javax.swing.JFrame {
      */
     public ConfigAparencia() {
         initComponents();
+        Color color = new Color(214, 217, 223);
+        painelPrincipal.setBackground(color);
+        jLabel1.setForeground(Color.black);
+        jLabel2.setForeground(Color.black);
+        jLabel3.setForeground(Color.black);
+        jLabel4.setForeground(Color.black);
         centreWindow(this);
     }
 
@@ -46,7 +53,7 @@ public class ConfigAparencia extends javax.swing.JFrame {
 
         jLabel1.setText("Cor");
 
-        selecaoCores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "White", "Black" }));
+        selecaoCores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Default", "White", "Black" }));
         selecaoCores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selecaoCoresActionPerformed(evt);
@@ -55,7 +62,17 @@ public class ConfigAparencia extends javax.swing.JFrame {
 
         jLabel2.setText("Unidade de V.");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Km/h", "M/s" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "m/s", "Km/h" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Idioma");
 
@@ -63,7 +80,12 @@ public class ConfigAparencia extends javax.swing.JFrame {
 
         jLabel4.setText("Unidade de C");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C°", "F°" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "°C", "°F", "°K" }));
+        jComboBox3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox3ItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
@@ -76,7 +98,7 @@ public class ConfigAparencia extends javax.swing.JFrame {
                     .addGroup(painelPrincipalLayout.createSequentialGroup()
                         .addComponent(selecaoCores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
@@ -125,13 +147,48 @@ public class ConfigAparencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selecaoCoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecaoCoresActionPerformed
-        if (selecaoCores.equals("Black")) {
+        String seleCor = selecaoCores.getSelectedItem().toString();
+        if (seleCor.equals("Default")) {
+            Color color = new Color(214, 217, 223);
+            painelPrincipal.setBackground(color);
+            jLabel1.setForeground(Color.black);
+            jLabel2.setForeground(Color.black);
+            jLabel3.setForeground(Color.black);
+            jLabel4.setForeground(Color.black);
+        } else if (seleCor.equals("Black")) {
+            jLabel1.setForeground(Color.white);
+            jLabel2.setForeground(Color.white);
+            jLabel3.setForeground(Color.white);
+            jLabel4.setForeground(Color.white);
             painelPrincipal.setBackground(Color.black);
-        }
-        else if (selecaoCores.equals("White")) {
+        } else if (seleCor.equals("White")) {
             painelPrincipal.setBackground(Color.white);
+            jLabel1.setForeground(Color.black);
+            jLabel2.setForeground(Color.black);
+            jLabel3.setForeground(Color.black);
+            jLabel4.setForeground(Color.black);
         }
     }//GEN-LAST:event_selecaoCoresActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
+        AppPrincipalVIEW appP = new AppPrincipalVIEW();
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            String selectedValue = jComboBox3.getSelectedItem().toString();
+            appP.mudarTemp(selectedValue);
+        }
+    }//GEN-LAST:event_jComboBox3ItemStateChanged
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        AppPrincipalVIEW appP = new AppPrincipalVIEW();
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            String selectedValueWind = jComboBox1.getSelectedItem().toString();
+            appP.mudarVento(selectedValueWind);
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -167,7 +224,7 @@ public class ConfigAparencia extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void centreWindow(Window frame) {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
@@ -175,14 +232,14 @@ public class ConfigAparencia extends javax.swing.JFrame {
         frame.setLocation(x, y);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel painelPrincipal;
-    private javax.swing.JComboBox<String> selecaoCores;
+    public javax.swing.JComboBox<String> selecaoCores;
     // End of variables declaration//GEN-END:variables
 }

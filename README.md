@@ -53,9 +53,9 @@ Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
   <br>
   &nbsp &nbsp &nbsp 2. Na barra de host, digite: "sql10.freesqldatabase.com"
   <br>
-  &nbsp &nbsp &nbsp 3. Na barra de usuário, digite: "sql10663137"
+  &nbsp &nbsp &nbsp 3. Na barra de usuário, digite: "sql10665025"
   <br>
-  &nbsp &nbsp &nbsp 4. Na barra de senha, digite: "LWxSrSziSd"
+  &nbsp &nbsp &nbsp 4. Na barra de senha, digite: "awsy9EQLBk"
   </details>
 
 + <details>

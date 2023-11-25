@@ -11,7 +11,7 @@ public class ConecSQL {
         Connection conn = null;
 
         try {
-            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10663137?user=sql10663137&password=LWxSrSziSd";
+            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10665025?user=sql10665025&password=awsy9EQLBk";
             conn = DriverManager.getConnection(url);
 
         } catch (SQLException error) {
