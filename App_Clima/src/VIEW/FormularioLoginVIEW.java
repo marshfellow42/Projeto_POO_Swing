@@ -36,7 +36,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     
     public FormularioLoginVIEW() {
         initComponents();
-        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setTitle("Weathervane");
         setIconImage();
         centreWindow(this);
@@ -52,8 +51,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         if (lembrarLogin.isSelected()) {
             txtNomeUsuario.setText(prefs.get("username", ""));
             txtSenhaUsuario.setText(prefs.get("password", ""));
-            Logar();
-            closeFrame(this);
         }
     }
 

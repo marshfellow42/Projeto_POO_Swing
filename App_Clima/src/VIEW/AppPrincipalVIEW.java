@@ -56,8 +56,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         connectToDatabase();
         centreWindow(this);
         getIPGeo();
-        mudarTemp(selecTemp);
-        mudarVento(selecMed);
 
         menu = new JPopupMenu();
         procura = new Painel_Pesquisa();
@@ -359,7 +357,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         FormularioLoginVIEW login = new FormularioLoginVIEW();
         login.lembrarLogin.setSelected(false);
         login.setVisible(true);
-        // One step at a time
+        // One step at a time   
 
         dispose();
 
@@ -437,11 +435,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         }
     }
 
-    ConfigAparencia appearance = new ConfigAparencia();
-    String seleCor = appearance.selecaoCores.getSelectedItem().toString();
-    String selecMed = appearance.jComboBox1.getSelectedItem().toString();
-    String selecTemp = appearance.jComboBox3.getSelectedItem().toString();
-
     // Variáveis globais
     int roundTemp = 0;
     int roundWind = 0;
@@ -510,7 +503,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                         double lati = Double.parseDouble(newLat);
                         double longi = Double.parseDouble(newLon);
                         URL urlLoc = null;
-                        urlLoc = new URL("https://nominatim.openstreetmap.org/reverse?lat=" + newLat + "&lon=" + newLon + "&format=json&zoom=10");
+                        urlLoc = new URL("https://nominatim.openstreetmap.org/reverse?lat=" + lati + "&lon=" + longi + "&format=json&zoom=10");
                         try {
                             String jsonLoc = null;
                             jsonLoc = IOUtils.toString(urlLoc, "UTF-8");
@@ -678,29 +671,35 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
     }
 
     public void mudarTemp(String unidadeMedida) {
+        System.out.println(roundTemp);
+        System.out.println(unidadeMedida);
+        System.out.println(temperatura.getText());
         switch (unidadeMedida) {
             case "°C":
                 temperatura.setText(roundTemp + "°C");
                 break;
             case "°F":
                 int newTempF = (int) (roundTemp * 1.8 + 32);
-                temperatura.setText(newTempF + " °F");
+                temperatura.setText(newTempF + "°F");
+                
+                System.out.println(temperatura.getText());
                 break;
             case "°K":
                 int newTempK = (int) (roundTemp + 273.15);
-                temperatura.setText(newTempK + " °K");
-                break;
-            default:
+                temperatura.setText(newTempK + "°K");
                 break;
         }
     }
 
     public void mudarVento(String unidadeVento) {
-        if (unidadeVento.equals("m/s")) {
-            ventania.setText(roundWind + " m/s");
-        } else if (unidadeVento.equals("Km/h")) {
-            int newRoundWind = (int) (roundWind * 3.6);
-            ventania.setText(newRoundWind + " Km/h");
+        switch (unidadeVento) {
+            case "m/s":
+                ventania.setText(roundWind + " m/s");
+                break;
+            case "Km/h":
+                int newRoundWind = (int) (roundWind * 3.6);
+                ventania.setText(newRoundWind + " Km/h");
+                break;
         }
     }
 
