@@ -680,8 +680,6 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             case "°F":
                 int newTempF = (int) (roundTemp * 1.8 + 32);
                 temperatura.setText(newTempF + "°F");
-
-                System.out.println(temperatura.getText());
                 break;
             case "°K":
                 int newTempK = (int) (roundTemp + 273.15);

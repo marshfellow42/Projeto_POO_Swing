@@ -71,11 +71,6 @@ public class ConfigAparencia extends javax.swing.JFrame {
                 jComboBox1ItemStateChanged(evt);
             }
         });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Idioma");
 
@@ -206,10 +201,6 @@ public class ConfigAparencia extends javax.swing.JFrame {
         }
         savePreferences();
     }//GEN-LAST:event_selecaoCoresActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     AppPrincipalVIEW appP = new AppPrincipalVIEW();
 
