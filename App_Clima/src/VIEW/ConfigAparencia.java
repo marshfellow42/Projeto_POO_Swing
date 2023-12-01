@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ItemEvent;
+import java.util.prefs.Preferences;
 
 /**
  *
@@ -21,6 +22,8 @@ public class ConfigAparencia extends javax.swing.JFrame {
      */
     public ConfigAparencia() {
         initComponents();
+        restorePreferences();
+        updateUI();
         Color color = new Color(214, 217, 223);
         painelPrincipal.setBackground(color);
         jLabel1.setForeground(Color.black);
@@ -77,6 +80,11 @@ public class ConfigAparencia extends javax.swing.JFrame {
         jLabel3.setText("Idioma");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português-Brazil", "Inglês", "Japonês", "Francês" }));
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
 
         jLabel4.setText("Unidade de C");
 
@@ -146,49 +154,84 @@ public class ConfigAparencia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    String selectedColor = null;
+    String selectedWindUnit = null;
+    String selectedLanguage = null;
+    String selectedTemperatureUnit = null;
+
+    private void restorePreferences() {
+        Preferences prefs = Preferences.userNodeForPackage(ConfigAparencia.class);
+        selectedColor = prefs.get("selectedColor", "Default");
+        selectedWindUnit = prefs.get("selectedWindUnit", "m/s");
+        selectedLanguage = prefs.get("selectedLanguage", "Português-Brazil");
+        selectedTemperatureUnit = prefs.get("selectedTemperatureUnit", "°C");
+    }
+
+    private void updateUI() {
+        selecaoCores.setSelectedItem(selectedColor);
+        jComboBox1.setSelectedItem(selectedWindUnit);
+        jComboBox2.setSelectedItem(selectedLanguage);
+        jComboBox3.setSelectedItem(selectedTemperatureUnit);
+    }
+
+    private void savePreferences() {
+        Preferences prefs = Preferences.userNodeForPackage(ConfigAparencia.class);
+        prefs.put("selectedColor", selectedColor);
+        prefs.put("selectedWindUnit", selectedWindUnit);
+        prefs.put("selectedLanguage", selectedLanguage);
+        prefs.put("selectedTemperatureUnit", selectedTemperatureUnit);
+    }
+
     private void selecaoCoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecaoCoresActionPerformed
-        String seleCor = selecaoCores.getSelectedItem().toString();
-        if (seleCor.equals("Default")) {
+        String selectedColor = selecaoCores.getSelectedItem().toString();
+        if (selectedColor.equals("Default")) {
             Color color = new Color(214, 217, 223);
             painelPrincipal.setBackground(color);
             jLabel1.setForeground(Color.black);
             jLabel2.setForeground(Color.black);
             jLabel3.setForeground(Color.black);
             jLabel4.setForeground(Color.black);
-        } else if (seleCor.equals("Black")) {
+        } else if (selectedColor.equals("Black")) {
             jLabel1.setForeground(Color.white);
             jLabel2.setForeground(Color.white);
             jLabel3.setForeground(Color.white);
             jLabel4.setForeground(Color.white);
             painelPrincipal.setBackground(Color.black);
-        } else if (seleCor.equals("White")) {
+        } else if (selectedColor.equals("White")) {
             painelPrincipal.setBackground(Color.white);
             jLabel1.setForeground(Color.black);
             jLabel2.setForeground(Color.black);
             jLabel3.setForeground(Color.black);
             jLabel4.setForeground(Color.black);
         }
+        savePreferences();
     }//GEN-LAST:event_selecaoCoresActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    AppPrincipalVIEW appP = new AppPrincipalVIEW();
+
     private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
-        AppPrincipalVIEW appP = new AppPrincipalVIEW();
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            String selectedValue = jComboBox3.getSelectedItem().toString();
-            appP.mudarTemp(selectedValue);
+            String selectedTemperatureUnit = jComboBox3.getSelectedItem().toString();
+            appP.mudarTemp(selectedTemperatureUnit);
         }
+        savePreferences();
     }//GEN-LAST:event_jComboBox3ItemStateChanged
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        AppPrincipalVIEW appP = new AppPrincipalVIEW();
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            String selectedValueWind = jComboBox1.getSelectedItem().toString();
-            appP.mudarVento(selectedValueWind);
+            String selectedWindUnit = jComboBox1.getSelectedItem().toString();
+            appP.mudarVento(selectedWindUnit);
         }
+        savePreferences();
     }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        String selectedLanguage = jComboBox2.getSelectedItem().toString();
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     /**
      * @param args the command line arguments

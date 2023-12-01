@@ -47,6 +47,7 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnCriarConta = new javax.swing.JButton();
         checkSenhaCriar = new javax.swing.JCheckBox();
+        comeback = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +86,13 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
             }
         });
 
+        comeback.setText("Voltar");
+        comeback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comebackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,7 +101,9 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(btnCriarConta))
+                        .addComponent(btnCriarConta)
+                        .addGap(63, 63, 63)
+                        .addComponent(comeback))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +115,7 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
                                 .addComponent(txtCriarNomeUsuario)
                                 .addComponent(txtCriarSenhaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +131,9 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(checkSenhaCriar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(btnCriarConta)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCriarConta)
+                    .addComponent(comeback))
                 .addGap(17, 17, 17))
         );
 
@@ -155,6 +167,12 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
             Checar();
         }
     }//GEN-LAST:event_txtCriarSenhaUsuarioKeyPressed
+
+    private void comebackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comebackActionPerformed
+        FormularioLoginVIEW Flogin = new FormularioLoginVIEW();
+        Flogin.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_comebackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +212,7 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriarConta;
     private javax.swing.JCheckBox checkSenhaCriar;
+    private javax.swing.JButton comeback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtCriarNomeUsuario;

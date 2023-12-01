@@ -1,4 +1,4 @@
-# Projeto_POO_Swing
+  # Projeto_POO_Swing
 
 Esse projeto é um trabalho do segundo semestre da disciplina de POO 
 
@@ -23,6 +23,10 @@ Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
 - [Commons-IO](https://mvnrepository.com/artifact/commons-io/commons-io/2.15.0)
 - [Org-Json](https://mvnrepository.com/artifact/org.json/json/20231013)
 - [MigLayout 4.0](https://mvnrepository.com/artifact/com.miglayout/miglayout-swing)
+- [JMapViewer](https://mvnrepository.com/artifact/org.openstreetmap.jmapviewer/jmapviewer/2.16)
+- [JavaMail](https://javaee.github.io/javamail/)
+- [JavaBeans Activation](https://mvnrepository.com/artifact/javax.activation/activation/1.1.1)
+- [com.sun.net.ssl](http://www.java2s.com/Code/Jar/c/Downloadcomsunnetssljar.htm)
 ### API:
 - [OpenWeatherMap](https://openweathermap.org/current)
 - [IP-API](https://ip-api.com/docs/api:json)
