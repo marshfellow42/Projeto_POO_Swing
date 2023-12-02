@@ -12,7 +12,7 @@ Esse projeto é um trabalho do segundo semestre da disciplina de POO
 O projeto é um aplicativo simples de clima
 
 ## Como executar
-Usando o Netbeans, pois se executar como JAR ele não inclui as bibliotecas
+De preferência usando o Apache Netbeans
 
 ## Requerimentos
 **Java 17 (ou superior)**
