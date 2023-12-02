@@ -10,7 +10,6 @@ import java.awt.Window;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -125,9 +124,6 @@ public class RecuperarSenha extends javax.swing.JFrame {
 
         String novaSenha = newPass.getText();
         String confirmarSenha = confirmPass.getText();
-
-        System.out.println(novaSenha);
-        System.out.println(nomeUser);
 
         if (!novaSenha.equals(confirmarSenha)) {
             JOptionPane.showMessageDialog(null, "As senhas não estão iguais");

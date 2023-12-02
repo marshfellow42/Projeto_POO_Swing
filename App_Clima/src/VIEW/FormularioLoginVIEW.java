@@ -8,7 +8,6 @@ import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
@@ -18,7 +17,6 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.util.prefs.Preferences;
 import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 
 /**
