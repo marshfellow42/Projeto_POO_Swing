@@ -399,7 +399,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
     private void connectToDatabase() {
         try {
-            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10665025?user=sql10665025&password=awsy9EQLBk";
+            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10667230?user=sql10667230&password=hGpva5MKx8";
             conn = DriverManager.getConnection(url);
 
         } catch (SQLException error) {
