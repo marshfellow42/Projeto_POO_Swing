@@ -57,9 +57,9 @@ De preferência usando o Apache Netbeans
   <br>
   &nbsp &nbsp &nbsp 2. Na barra de host, digite: "sql10.freesqldatabase.com"
   <br>
-  &nbsp &nbsp &nbsp 3. Na barra de usuário, digite: "sql10667230"
+  &nbsp &nbsp &nbsp 3. Na barra de usuário, digite: "sql10669278"
   <br>
-  &nbsp &nbsp &nbsp 4. Na barra de senha, digite: "hGpva5MKx8"
+  &nbsp &nbsp &nbsp 4. Na barra de senha, digite: "NSBMGmXJXQ"
   </details>
 
 + <details>
