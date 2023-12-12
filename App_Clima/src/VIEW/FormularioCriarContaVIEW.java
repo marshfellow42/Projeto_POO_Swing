@@ -60,7 +60,6 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         comeback.setBackground(new java.awt.Color(102, 102, 102));
-        comeback.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         comeback.setForeground(new java.awt.Color(255, 255, 255));
         comeback.setText("Voltar");
         comeback.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +84,6 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         txtCriarNomeUsuario.setBounds(140, 140, 190, 22);
 
         btnCriarConta.setBackground(new java.awt.Color(102, 102, 102));
-        btnCriarConta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
         btnCriarConta.setText("Cadastrar");
         btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
@@ -104,19 +102,16 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
         jPanel1.add(txtCriarSenhaUsuario);
         txtCriarSenhaUsuario.setBounds(140, 200, 190, 22);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(60, 200, 70, 20);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nome De Usuario");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(30, 140, 114, 20);
 
-        checkSenhaCriar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         checkSenhaCriar.setForeground(new java.awt.Color(255, 255, 255));
         checkSenhaCriar.setText("Mostrar Senha");
         checkSenhaCriar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,13 +120,13 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
             }
         });
         jPanel1.add(checkSenhaCriar);
-        checkSenhaCriar.setBounds(60, 260, 130, 19);
+        checkSenhaCriar.setBounds(60, 260, 130, 20);
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cadastro");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 10, 190, 42);
+        jLabel4.setBounds(10, 10, 190, 48);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 400, 480));
 

@@ -88,7 +88,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(890, 520));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,7 +96,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         BtnCriarConta.setBackground(new java.awt.Color(102, 102, 102));
-        BtnCriarConta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         BtnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
         BtnCriarConta.setText("Criar Conta");
         BtnCriarConta.addActionListener(new java.awt.event.ActionListener() {
@@ -106,12 +104,11 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnCriarConta);
-        BtnCriarConta.setBounds(530, 430, 100, 21);
+        BtnCriarConta.setBounds(530, 430, 100, 23);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(null);
 
-        txtSenhaUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtSenhaUsuario.setBorder(null);
         txtSenhaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +124,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         txtSenhaUsuario.setBounds(140, 190, 190, 20);
 
         BtnLogin.setBackground(new java.awt.Color(102, 102, 102));
-        BtnLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         BtnLogin.setForeground(new java.awt.Color(255, 255, 255));
         BtnLogin.setText("Login");
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -136,9 +132,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
         jPanel2.add(BtnLogin);
-        BtnLogin.setBounds(160, 370, 72, 21);
+        BtnLogin.setBounds(160, 370, 72, 23);
 
-        txtNomeUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtNomeUsuario.setBorder(null);
         txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,19 +148,18 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         jPanel2.add(txtNomeUsuario);
         txtNomeUsuario.setBounds(140, 140, 190, 20);
 
-        Usuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        Usuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Usuario.setForeground(new java.awt.Color(255, 255, 255));
         Usuario.setText("Usuario");
         jPanel2.add(Usuario);
         Usuario.setBounds(70, 140, 70, 20);
 
-        Senha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        Senha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Senha.setForeground(new java.awt.Color(255, 255, 255));
         Senha.setText("Senha");
         jPanel2.add(Senha);
         Senha.setBounds(70, 190, 70, 20);
 
-        lembrarLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lembrarLogin.setForeground(new java.awt.Color(255, 255, 255));
         lembrarLogin.setText("Lembre de mim");
         lembrarLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -174,9 +168,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
         jPanel2.add(lembrarLogin);
-        lembrarLogin.setBounds(210, 300, 120, 19);
+        lembrarLogin.setBounds(210, 300, 120, 20);
 
-        checkSenhaLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         checkSenhaLogin.setForeground(new java.awt.Color(255, 255, 255));
         checkSenhaLogin.setText("Mostrar Senha");
         checkSenhaLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +180,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         jPanel2.add(checkSenhaLogin);
         checkSenhaLogin.setBounds(40, 290, 110, 40);
 
-        esqueci.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         esqueci.setForeground(new java.awt.Color(0, 153, 255));
         esqueci.setText("Esqueci a Senha");
         esqueci.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,13 +194,13 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
         jPanel2.add(esqueci);
-        esqueci.setBounds(240, 240, 100, 14);
+        esqueci.setBounds(240, 240, 100, 16);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Login");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(20, 10, 100, 40);
+        jLabel2.setBounds(20, 10, 100, 50);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(80, 20, 400, 480);

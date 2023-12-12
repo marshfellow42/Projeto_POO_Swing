@@ -57,24 +57,23 @@ public class EsqueceuSenha extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Email");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(25, 39, 70, 17);
+        jLabel1.setBounds(25, 39, 70, 20);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nome de Usuário");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(25, 123, 120, 17);
+        jLabel2.setBounds(25, 123, 120, 20);
         jPanel1.add(email);
         email.setBounds(25, 67, 210, 22);
         jPanel1.add(username);
         username.setBounds(25, 151, 210, 22);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Avançar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +82,7 @@ public class EsqueceuSenha extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(30, 220, 73, 21);
+        jButton1.setBounds(30, 220, 73, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
         jLabel3.setText("jLabel3");

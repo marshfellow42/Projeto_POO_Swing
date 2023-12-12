@@ -144,7 +144,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         temperatura.setText(".");
         jPanel1.add(temperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 119, 60));
 
-        nomeCidade.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        nomeCidade.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         nomeCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nomeCidade.setText(".");
         jPanel1.add(nomeCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 68, 260, 50));

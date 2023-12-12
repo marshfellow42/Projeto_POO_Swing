@@ -51,20 +51,17 @@ public class RecuperarSenha extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nova Senha");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(34, 39, 90, 14);
+        jLabel1.setBounds(34, 39, 90, 16);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Confirmar Senha");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(34, 122, 110, 14);
+        jLabel2.setBounds(34, 122, 110, 16);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Recuperar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -73,9 +70,8 @@ public class RecuperarSenha extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(34, 239, 90, 21);
+        jButton1.setBounds(34, 239, 90, 23);
 
-        verSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         verSenha.setForeground(new java.awt.Color(255, 255, 255));
         verSenha.setText("Mostrar Senha");
         verSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +80,7 @@ public class RecuperarSenha extends javax.swing.JFrame {
             }
         });
         jPanel1.add(verSenha);
-        verSenha.setBounds(34, 190, 120, 19);
+        verSenha.setBounds(34, 190, 120, 20);
 
         newPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

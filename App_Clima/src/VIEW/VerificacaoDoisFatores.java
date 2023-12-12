@@ -36,6 +36,7 @@ public class VerificacaoDoisFatores extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         codeInput = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -44,8 +45,8 @@ public class VerificacaoDoisFatores extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Avançar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -54,19 +55,23 @@ public class VerificacaoDoisFatores extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(110, 240, 100, 24);
+        jButton1.setBounds(100, 240, 100, 27);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Coloque os seis digitos que você recebeu");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(30, 30, 270, 20);
 
-        codeInput.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        codeInput.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jPanel1.add(codeInput);
-        codeInput.setBounds(93, 103, 150, 52);
+        codeInput.setBounds(80, 110, 150, 52);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 300));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 0, 340, 310);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -132,6 +137,7 @@ public class VerificacaoDoisFatores extends javax.swing.JFrame {
     private javax.swing.JTextField codeInput;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
