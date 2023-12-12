@@ -88,6 +88,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -107,6 +108,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         BtnCriarConta.setBounds(530, 430, 100, 23);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
         jPanel2.setLayout(null);
 
         txtSenhaUsuario.setBorder(null);

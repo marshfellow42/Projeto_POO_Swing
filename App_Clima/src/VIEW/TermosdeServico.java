@@ -46,7 +46,7 @@ public class TermosdeServico extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("<html> <body>     <p>Nome da empresa: Hairydae</p>     <p>Nome do app: Weathervane</p>     <p>Ano de criação: 2023</p>     <p>Programador: Leandro Cândido</p> <p>Designers: José Maia e Ana Lívia</p> <p>Organizador de Dados: Erick Carneiro</p></body> </html>");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 250, 114));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 250, 120));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
         jLabel2.setText("jLabel2");
