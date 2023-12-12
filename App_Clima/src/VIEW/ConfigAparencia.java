@@ -51,10 +51,19 @@ public class ConfigAparencia extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        painelPrincipal.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cor");
+        painelPrincipal.add(jLabel1);
+        jLabel1.setBounds(28, 37, 96, 17);
 
         selecaoCores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Default", "White", "Black" }));
         selecaoCores.addActionListener(new java.awt.event.ActionListener() {
@@ -62,8 +71,14 @@ public class ConfigAparencia extends javax.swing.JFrame {
                 selecaoCoresActionPerformed(evt);
             }
         });
+        painelPrincipal.add(selecaoCores);
+        selecaoCores.setBounds(28, 65, 72, 22);
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Unidade de V.");
+        painelPrincipal.add(jLabel2);
+        jLabel2.setBounds(143, 37, 100, 17);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "m/s", "Km/h" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
@@ -71,8 +86,14 @@ public class ConfigAparencia extends javax.swing.JFrame {
                 jComboBox1ItemStateChanged(evt);
             }
         });
+        painelPrincipal.add(jComboBox1);
+        jComboBox1.setBounds(143, 65, 72, 22);
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Idioma");
+        painelPrincipal.add(jLabel3);
+        jLabel3.setBounds(251, 37, 80, 17);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português-Brazil", "Inglês", "Japonês", "Francês" }));
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
@@ -80,8 +101,14 @@ public class ConfigAparencia extends javax.swing.JFrame {
                 jComboBox2ItemStateChanged(evt);
             }
         });
+        painelPrincipal.add(jComboBox2);
+        jComboBox2.setBounds(251, 65, 121, 22);
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Unidade de C");
+        painelPrincipal.add(jLabel4);
+        jLabel4.setBounds(143, 105, 110, 17);
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "°C", "°F", "°K" }));
         jComboBox3.addItemListener(new java.awt.event.ItemListener() {
@@ -89,62 +116,15 @@ public class ConfigAparencia extends javax.swing.JFrame {
                 jComboBox3ItemStateChanged(evt);
             }
         });
+        painelPrincipal.add(jComboBox3);
+        jComboBox3.setBounds(143, 133, 72, 22);
 
-        javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
-        painelPrincipal.setLayout(painelPrincipalLayout);
-        painelPrincipalLayout.setHorizontalGroup(
-            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addComponent(selecaoCores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addGroup(painelPrincipalLayout.createSequentialGroup()
-                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(28, 28, 28))
-        );
-        painelPrincipalLayout.setVerticalGroup(
-            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selecaoCores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        painelPrincipal.add(jLabel5);
+        jLabel5.setBounds(0, 0, 400, 360);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(painelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 356));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -273,6 +253,7 @@ public class ConfigAparencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel painelPrincipal;
     public javax.swing.JComboBox<String> selecaoCores;
     // End of variables declaration//GEN-END:variables
