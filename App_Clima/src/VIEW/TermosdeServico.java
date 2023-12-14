@@ -34,36 +34,26 @@ public class TermosdeServico extends javax.swing.JFrame {
 
         imagemPrincipal = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imagemPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/company-logo.png"))); // NOI18N
+        getContentPane().add(imagemPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, -1, -1));
 
-        jLabel1.setText("<html>\n<body>\n    <p>Nome da empresa: Hairydae</p>\n    <p>Nome do app: Weathervane</p>\n    <p>Ano de criação: 2023</p>\n    <p>Criador: Leandro Cândido</p>\n</body>\n</html>");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("<html> <body>     <p>Nome da empresa: Hairydae</p>     <p>Nome do app: Weathervane</p>     <p>Ano de criação: 2023</p>     <p>Programador: Leandro Cândido</p> <p>Designers: José Maia e Ana Lívia</p> <p>Organizador de Dados: Erick Carneiro</p></body> </html>");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 250, 120));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(imagemPrincipal))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(imagemPrincipal)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 480));
+
+        jPanel1.setLayout(null);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -107,6 +97,8 @@ public class TermosdeServico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imagemPrincipal;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
     private void centreWindow(Window frame) {

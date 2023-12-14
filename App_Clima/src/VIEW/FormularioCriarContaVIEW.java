@@ -41,17 +41,34 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        comeback = new javax.swing.JButton();
         txtCriarNomeUsuario = new javax.swing.JTextField();
+        btnCriarConta = new javax.swing.JButton();
         txtCriarSenhaUsuario = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
-        btnCriarConta = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         checkSenhaCriar = new javax.swing.JCheckBox();
-        comeback = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Nome De Usuario");
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(null);
+
+        comeback.setBackground(new java.awt.Color(102, 102, 102));
+        comeback.setForeground(new java.awt.Color(255, 255, 255));
+        comeback.setText("Voltar");
+        comeback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comebackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comeback);
+        comeback.setBounds(190, 400, 90, 20);
 
         txtCriarNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,79 +80,60 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
                 txtCriarNomeUsuarioKeyPressed(evt);
             }
         });
+        jPanel1.add(txtCriarNomeUsuario);
+        txtCriarNomeUsuario.setBounds(140, 140, 190, 22);
 
-        txtCriarSenhaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCriarSenhaUsuarioKeyPressed(evt);
-            }
-        });
-
-        jLabel2.setText("Senha");
-
+        btnCriarConta.setBackground(new java.awt.Color(102, 102, 102));
+        btnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
         btnCriarConta.setText("Cadastrar");
         btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCriarContaActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCriarConta);
+        btnCriarConta.setBounds(50, 400, 90, 20);
 
+        txtCriarSenhaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCriarSenhaUsuarioKeyPressed(evt);
+            }
+        });
+        jPanel1.add(txtCriarSenhaUsuario);
+        txtCriarSenhaUsuario.setBounds(140, 200, 190, 22);
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Senha");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(60, 200, 70, 20);
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Nome De Usuario");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(30, 140, 114, 20);
+
+        checkSenhaCriar.setForeground(new java.awt.Color(255, 255, 255));
         checkSenhaCriar.setText("Mostrar Senha");
         checkSenhaCriar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkSenhaCriarActionPerformed(evt);
             }
         });
+        jPanel1.add(checkSenhaCriar);
+        checkSenhaCriar.setBounds(60, 260, 130, 20);
 
-        comeback.setText("Voltar");
-        comeback.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comebackActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Cadastro");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(10, 10, 190, 48);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(btnCriarConta)
-                        .addGap(63, 63, 63)
-                        .addComponent(comeback))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(checkSenhaCriar))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(txtCriarNomeUsuario)
-                                .addComponent(txtCriarSenhaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(txtCriarNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(txtCriarSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(checkSenhaCriar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCriarConta)
-                    .addComponent(comeback))
-                .addGap(17, 17, 17))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 400, 480));
+
+        jLabel3.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -215,6 +213,9 @@ public class FormularioCriarContaVIEW extends javax.swing.JFrame {
     private javax.swing.JButton comeback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCriarNomeUsuario;
     private javax.swing.JPasswordField txtCriarSenhaUsuario;
     // End of variables declaration//GEN-END:variables

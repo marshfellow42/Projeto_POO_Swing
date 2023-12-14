@@ -19,9 +19,9 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="algori_icon" min="-2" pref="27" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="algori_pesq" min="-2" pref="283" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="algori_remove" pref="66" max="32767" attributes="0"/>
+              <Component id="algori_pesq" pref="318" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="algori_remove" min="-2" pref="55" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,7 +38,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/VIEW/Assets/search_small.png"/>
+          <Image iconType="3" name="/Assets/search_small.png"/>
         </Property>
       </Properties>
     </Component>

@@ -73,47 +73,45 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Usuario = new javax.swing.JLabel();
-        txtNomeUsuario = new javax.swing.JTextField();
-        Senha = new javax.swing.JLabel();
-        BtnLogin = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         BtnCriarConta = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         txtSenhaUsuario = new javax.swing.JPasswordField();
-        checkSenhaLogin = new javax.swing.JCheckBox();
+        BtnLogin = new javax.swing.JButton();
+        txtNomeUsuario = new javax.swing.JTextField();
+        Usuario = new javax.swing.JLabel();
+        Senha = new javax.swing.JLabel();
         lembrarLogin = new javax.swing.JCheckBox();
+        checkSenhaLogin = new javax.swing.JCheckBox();
         esqueci = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Usuario.setText("Nome de Usuario");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(890, 520));
+        jPanel1.setLayout(null);
 
-        txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeUsuarioActionPerformed(evt);
-            }
-        });
-        txtNomeUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNomeUsuarioKeyPressed(evt);
-            }
-        });
-
-        Senha.setText("Senha");
-
-        BtnLogin.setText("Login");
-        BtnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnLoginActionPerformed(evt);
-            }
-        });
-
+        BtnCriarConta.setBackground(new java.awt.Color(102, 102, 102));
+        BtnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
         BtnCriarConta.setText("Criar Conta");
         BtnCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCriarContaActionPerformed(evt);
             }
         });
+        jPanel1.add(BtnCriarConta);
+        BtnCriarConta.setBounds(530, 430, 100, 23);
 
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel2.setLayout(null);
+
+        txtSenhaUsuario.setBorder(null);
         txtSenhaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaUsuarioActionPerformed(evt);
@@ -124,20 +122,65 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 txtSenhaUsuarioKeyPressed(evt);
             }
         });
+        jPanel2.add(txtSenhaUsuario);
+        txtSenhaUsuario.setBounds(140, 190, 190, 20);
 
-        checkSenhaLogin.setText("Mostrar Senha");
-        checkSenhaLogin.addActionListener(new java.awt.event.ActionListener() {
+        BtnLogin.setBackground(new java.awt.Color(102, 102, 102));
+        BtnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        BtnLogin.setText("Login");
+        BtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkSenhaLoginActionPerformed(evt);
+                BtnLoginActionPerformed(evt);
             }
         });
+        jPanel2.add(BtnLogin);
+        BtnLogin.setBounds(160, 370, 72, 23);
 
+        txtNomeUsuario.setBorder(null);
+        txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeUsuarioActionPerformed(evt);
+            }
+        });
+        txtNomeUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeUsuarioKeyPressed(evt);
+            }
+        });
+        jPanel2.add(txtNomeUsuario);
+        txtNomeUsuario.setBounds(140, 140, 190, 20);
+
+        Usuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Usuario.setForeground(new java.awt.Color(255, 255, 255));
+        Usuario.setText("Usuario");
+        jPanel2.add(Usuario);
+        Usuario.setBounds(70, 140, 70, 20);
+
+        Senha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Senha.setForeground(new java.awt.Color(255, 255, 255));
+        Senha.setText("Senha");
+        jPanel2.add(Senha);
+        Senha.setBounds(70, 190, 70, 20);
+
+        lembrarLogin.setForeground(new java.awt.Color(255, 255, 255));
         lembrarLogin.setText("Lembre de mim");
         lembrarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lembrarLoginActionPerformed(evt);
             }
         });
+        jPanel2.add(lembrarLogin);
+        lembrarLogin.setBounds(210, 300, 120, 20);
+
+        checkSenhaLogin.setForeground(new java.awt.Color(255, 255, 255));
+        checkSenhaLogin.setText("Mostrar Senha");
+        checkSenhaLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkSenhaLoginActionPerformed(evt);
+            }
+        });
+        jPanel2.add(checkSenhaLogin);
+        checkSenhaLogin.setBounds(40, 290, 110, 40);
 
         esqueci.setForeground(new java.awt.Color(0, 153, 255));
         esqueci.setText("Esqueci a Senha");
@@ -152,60 +195,25 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 esqueciMouseExited(evt);
             }
         });
+        jPanel2.add(esqueci);
+        esqueci.setBounds(240, 240, 100, 16);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(checkSenhaLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lembrarLogin)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(BtnLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                        .addComponent(BtnCriarConta)
-                        .addGap(56, 56, 56))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Usuario)
-                                .addComponent(Senha)
-                                .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(esqueci)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(Usuario)
-                .addGap(18, 18, 18)
-                .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Senha)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(esqueci))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkSenhaLogin)
-                    .addComponent(lembrarLogin))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnLogin)
-                    .addComponent(BtnCriarConta))
-                .addGap(19, 19, 19))
-        );
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Login");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(20, 10, 100, 50);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(80, 20, 400, 480);
+
+        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 890, 520);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -317,6 +325,10 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario;
     private javax.swing.JCheckBox checkSenhaLogin;
     private javax.swing.JLabel esqueci;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     public javax.swing.JCheckBox lembrarLogin;
     private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JPasswordField txtSenhaUsuario;
