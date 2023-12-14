@@ -21,6 +21,8 @@ public class VerificacaoDoisFatores extends javax.swing.JFrame {
     public VerificacaoDoisFatores() {
         initComponents();
         centreWindow(this);
+        this.setTitle("Weathervane");
+        setIconImage();
     }
 
     /**
@@ -132,7 +134,10 @@ public class VerificacaoDoisFatores extends javax.swing.JFrame {
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
     }
-
+    
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icons8-climate-64.png")));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField codeInput;
     private javax.swing.JButton jButton1;

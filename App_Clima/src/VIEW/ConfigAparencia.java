@@ -22,6 +22,8 @@ public class ConfigAparencia extends javax.swing.JFrame {
      */
     public ConfigAparencia() {
         initComponents();
+        this.setTitle("Weathervane");
+        setIconImage();
         restorePreferences();
         updateUI();
         Color color = new Color(214, 217, 223);
@@ -244,6 +246,10 @@ public class ConfigAparencia extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
+    }
+    
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icons8-climate-64.png")));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> jComboBox1;

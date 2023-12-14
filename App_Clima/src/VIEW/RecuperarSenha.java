@@ -26,6 +26,8 @@ public class RecuperarSenha extends javax.swing.JFrame {
         initComponents();
         centreWindow(this);
         connectToDatabase();
+        this.setTitle("Weathervane");
+        setIconImage();
     }
 
     /**
@@ -200,7 +202,10 @@ public class RecuperarSenha extends javax.swing.JFrame {
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
     }
-
+    
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icons8-climate-64.png")));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField confirmPass;
     private javax.swing.JButton jButton1;

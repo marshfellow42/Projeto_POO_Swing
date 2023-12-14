@@ -20,7 +20,8 @@ public class TermosdeServico extends javax.swing.JFrame {
     public TermosdeServico() {
         initComponents();
         centreWindow(this);
-        
+        this.setTitle("Weathervane");
+        setIconImage();
     }
 
     /**
@@ -106,5 +107,9 @@ public class TermosdeServico extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
+    }
+    
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icons8-climate-64.png")));
     }
 }

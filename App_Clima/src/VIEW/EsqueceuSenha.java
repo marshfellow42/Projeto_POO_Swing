@@ -32,6 +32,8 @@ public class EsqueceuSenha extends javax.swing.JFrame {
     public EsqueceuSenha() {
         initComponents();
         centreWindow(this);
+        this.setTitle("Weathervane");
+        setIconImage();
     }
 
     /**
@@ -216,7 +218,9 @@ public class EsqueceuSenha extends javax.swing.JFrame {
 
     }
 
-
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icons8-climate-64.png")));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField email;
     private javax.swing.JButton jButton1;
