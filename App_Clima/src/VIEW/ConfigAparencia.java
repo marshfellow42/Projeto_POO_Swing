@@ -72,7 +72,7 @@ public class ConfigAparencia extends javax.swing.JFrame {
             }
         });
         painelPrincipal.add(selecaoCores);
-        selecaoCores.setBounds(28, 65, 72, 22);
+        selecaoCores.setBounds(28, 65, 80, 22);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));

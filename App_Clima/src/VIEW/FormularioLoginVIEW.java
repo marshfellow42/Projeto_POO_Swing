@@ -85,10 +85,11 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         checkSenhaLogin = new javax.swing.JCheckBox();
         esqueci = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(0, 0));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -96,8 +97,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(890, 520));
         jPanel1.setLayout(null);
 
-        BtnCriarConta.setBackground(new java.awt.Color(102, 102, 102));
-        BtnCriarConta.setForeground(new java.awt.Color(255, 255, 255));
+        BtnCriarConta.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCriarConta.setForeground(new java.awt.Color(0, 0, 0));
         BtnCriarConta.setText("Criar Conta");
         BtnCriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +106,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnCriarConta);
-        BtnCriarConta.setBounds(530, 430, 100, 23);
+        BtnCriarConta.setBounds(490, 430, 100, 23);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -123,10 +124,10 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtSenhaUsuario);
-        txtSenhaUsuario.setBounds(140, 190, 190, 20);
+        txtSenhaUsuario.setBounds(130, 190, 200, 20);
 
-        BtnLogin.setBackground(new java.awt.Color(102, 102, 102));
-        BtnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        BtnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        BtnLogin.setForeground(new java.awt.Color(0, 0, 0));
         BtnLogin.setText("Login");
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +149,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtNomeUsuario);
-        txtNomeUsuario.setBounds(140, 140, 190, 20);
+        txtNomeUsuario.setBounds(130, 140, 200, 20);
 
         Usuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Usuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,8 +205,20 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(20, 10, 100, 50);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Bem-Vindo de Volta!");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(50, 70, 150, 20);
+
         jPanel1.add(jPanel2);
         jPanel2.setBounds(80, 20, 400, 480);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Ainda não tem uma conta? Cadastre já!");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(490, 380, 320, 25);
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
@@ -327,6 +340,8 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel esqueci;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JCheckBox lembrarLogin;

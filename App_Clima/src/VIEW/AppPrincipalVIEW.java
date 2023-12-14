@@ -114,6 +114,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         exitBtn = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -156,7 +157,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         icone.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         icone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(icone, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 130, 119, 78));
+        jPanel1.add(icone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 119, 78));
 
         descricao.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         descricao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -176,10 +177,12 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         jPanel1.add(humidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 387, 144, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Vento:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 343, 99, -1));
 
         JLabel3.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        JLabel3.setForeground(new java.awt.Color(204, 204, 204));
         JLabel3.setText("Umidade:");
         jPanel1.add(JLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 343, 138, -1));
 
@@ -187,7 +190,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         ventania.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ventania.setText(".");
         jPanel1.add(ventania, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 387, 140, -1));
-        jPanel1.add(jMapViewer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 204, 113));
+        jPanel1.add(jMapViewer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 210, 130));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
         jLabel1.setText("jLabel1");
