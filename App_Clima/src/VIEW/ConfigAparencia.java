@@ -65,7 +65,7 @@ public class ConfigAparencia extends javax.swing.JFrame {
         painelPrincipal.add(jLabel1);
         jLabel1.setBounds(28, 37, 96, 17);
 
-        selecaoCores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Default", "White", "Black" }));
+        selecaoCores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Padrão", "Branco", "Preto" }));
         selecaoCores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selecaoCoresActionPerformed(evt);
@@ -159,20 +159,20 @@ public class ConfigAparencia extends javax.swing.JFrame {
 
     private void selecaoCoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecaoCoresActionPerformed
         String selectedColor = selecaoCores.getSelectedItem().toString();
-        if (selectedColor.equals("Default")) {
+        if (selectedColor.equals("Padrão")) {
             Color color = new Color(214, 217, 223);
             painelPrincipal.setBackground(color);
             jLabel1.setForeground(Color.black);
             jLabel2.setForeground(Color.black);
             jLabel3.setForeground(Color.black);
             jLabel4.setForeground(Color.black);
-        } else if (selectedColor.equals("Black")) {
+        } else if (selectedColor.equals("Preto")) {
             jLabel1.setForeground(Color.white);
             jLabel2.setForeground(Color.white);
             jLabel3.setForeground(Color.white);
             jLabel4.setForeground(Color.white);
             painelPrincipal.setBackground(Color.black);
-        } else if (selectedColor.equals("White")) {
+        } else if (selectedColor.equals("Branco")) {
             painelPrincipal.setBackground(Color.white);
             jLabel1.setForeground(Color.black);
             jLabel2.setForeground(Color.black);

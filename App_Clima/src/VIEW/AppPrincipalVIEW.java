@@ -203,9 +203,9 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Settings");
+        jMenu1.setText("Configurações");
 
-        botaoAparencia.setText("Appeareance");
+        botaoAparencia.setText("Aparência");
         botaoAparencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAparenciaActionPerformed(evt);
@@ -215,9 +215,9 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        menuAbout.setText("Help");
+        menuAbout.setText("Ajuda");
 
-        botaoSobre.setText("About");
+        botaoSobre.setText("Sobre");
         botaoSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSobreActionPerformed(evt);
@@ -227,7 +227,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
 
         jMenuBar1.add(menuAbout);
 
-        exitBtn.setText("Exit");
+        exitBtn.setText("Sair");
         exitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exitBtnMouseClicked(evt);
