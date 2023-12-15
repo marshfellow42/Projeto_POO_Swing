@@ -380,7 +380,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     }
     
     private void setIconImage() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icons8-climate-64.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/perereca_engracada.png")));
     }
     
     private void centreWindow(Window frame) {
