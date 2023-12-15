@@ -50,8 +50,9 @@ public class EsqueceuSenha extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         username = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,39 +65,48 @@ public class EsqueceuSenha extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Email");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(25, 39, 70, 20);
+        jLabel1.setBounds(150, 140, 40, 20);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nome de Usuário");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(25, 123, 120, 20);
+        jLabel2.setBounds(80, 190, 110, 20);
         jPanel1.add(email);
-        email.setBounds(25, 67, 210, 22);
+        email.setBounds(200, 140, 210, 22);
+
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
         jPanel1.add(username);
-        username.setBounds(25, 151, 210, 22);
+        username.setBounds(200, 190, 210, 22);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Avançar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Avançar");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(30, 220, 73, 23);
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(215, 278, 50, 16);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Voltar");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(150, 220, 72, 23);
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(202, 311, 70, 30);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Design sem nome (2).png"))); // NOI18N
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(-3, -4, 490, 370);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -107,30 +117,34 @@ public class EsqueceuSenha extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         mandarEmail(sixDigit);
         VerificacaoDoisFatores verif = new VerificacaoDoisFatores();
         verif.codeRecieved = sixDigit;
         verif.recoverUser = username.getText();
         verif.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         FormularioLoginVIEW Flogin = new FormularioLoginVIEW();
         Flogin.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -202,12 +216,13 @@ public class EsqueceuSenha extends javax.swing.JFrame {
             };
 
             Session session = Session.getInstance(props, auth);
-
+            String msg = "Aqui está seu código de recuperação de senha:";
+            String msg2 = "Se não foi você, por favor ignore este email.";
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(fromEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             message.setSubject("Envio do código");
-            String textHtml = "<h1> <b>" + texto + "</b> </h1>";
+            String textHtml = "<p>"+msg+"</p>"+"<hr/>"+"<h1> <b>" + texto + "</b> </h1>"+"<hr/>"+"<p>"+msg2+"</p>";
             message.setContent(textHtml, "text/html");
 
             Transport.send(message);
@@ -223,11 +238,12 @@ public class EsqueceuSenha extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField email;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

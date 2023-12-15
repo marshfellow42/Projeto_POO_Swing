@@ -74,10 +74,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BtnCriarConta = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         txtSenhaUsuario = new javax.swing.JPasswordField();
-        BtnLogin = new javax.swing.JButton();
         txtNomeUsuario = new javax.swing.JTextField();
         Usuario = new javax.swing.JLabel();
         Senha = new javax.swing.JLabel();
@@ -86,31 +83,16 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         esqueci = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        setMinimumSize(new java.awt.Dimension(856, 540));
+        setPreferredSize(new java.awt.Dimension(856, 550));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(890, 520));
-        jPanel1.setLayout(null);
-
-        BtnCriarConta.setBackground(new java.awt.Color(255, 255, 255));
-        BtnCriarConta.setForeground(new java.awt.Color(0, 0, 0));
-        BtnCriarConta.setText("Criar Conta");
-        BtnCriarConta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCriarContaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnCriarConta);
-        BtnCriarConta.setBounds(490, 430, 100, 23);
-
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel2.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtSenhaUsuario.setBorder(null);
         txtSenhaUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -123,19 +105,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 txtSenhaUsuarioKeyPressed(evt);
             }
         });
-        jPanel2.add(txtSenhaUsuario);
-        txtSenhaUsuario.setBounds(130, 190, 200, 20);
-
-        BtnLogin.setBackground(new java.awt.Color(255, 255, 255));
-        BtnLogin.setForeground(new java.awt.Color(0, 0, 0));
-        BtnLogin.setText("Login");
-        BtnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnLoginActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnLogin);
-        BtnLogin.setBounds(160, 370, 72, 23);
+        jPanel1.add(txtSenhaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 200, 20));
 
         txtNomeUsuario.setBorder(null);
         txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -148,20 +118,17 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 txtNomeUsuarioKeyPressed(evt);
             }
         });
-        jPanel2.add(txtNomeUsuario);
-        txtNomeUsuario.setBounds(130, 140, 200, 20);
+        jPanel1.add(txtNomeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 200, 20));
 
         Usuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Usuario.setForeground(new java.awt.Color(255, 255, 255));
-        Usuario.setText("Usuario");
-        jPanel2.add(Usuario);
-        Usuario.setBounds(70, 140, 70, 20);
+        Usuario.setText("Usuário");
+        jPanel1.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 50, -1));
 
         Senha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Senha.setForeground(new java.awt.Color(255, 255, 255));
         Senha.setText("Senha");
-        jPanel2.add(Senha);
-        Senha.setBounds(70, 190, 70, 20);
+        jPanel1.add(Senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 40, -1));
 
         lembrarLogin.setForeground(new java.awt.Color(255, 255, 255));
         lembrarLogin.setText("Lembre de mim");
@@ -170,8 +137,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 lembrarLoginActionPerformed(evt);
             }
         });
-        jPanel2.add(lembrarLogin);
-        lembrarLogin.setBounds(210, 300, 120, 20);
+        jPanel1.add(lembrarLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 120, -1));
 
         checkSenhaLogin.setForeground(new java.awt.Color(255, 255, 255));
         checkSenhaLogin.setText("Mostrar Senha");
@@ -180,8 +146,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 checkSenhaLoginActionPerformed(evt);
             }
         });
-        jPanel2.add(checkSenhaLogin);
-        checkSenhaLogin.setBounds(40, 290, 110, 40);
+        jPanel1.add(checkSenhaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 110, 40));
 
         esqueci.setForeground(new java.awt.Color(0, 153, 255));
         esqueci.setText("Esqueci a Senha");
@@ -196,35 +161,34 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
                 esqueciMouseExited(evt);
             }
         });
-        jPanel2.add(esqueci);
-        esqueci.setBounds(240, 240, 100, 16);
+        jPanel1.add(esqueci, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 100, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Login");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(20, 10, 100, 50);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 382, 100, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Bem-Vindo de Volta!");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(50, 70, 150, 20);
-
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(80, 20, 400, 480);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Ainda não tem uma conta? Cadastre já!");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(490, 380, 320, 25);
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 15, 190));
+        jLabel3.setText("Criar Conta");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(604, 423, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Cadastro (4).png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 890, 520);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 890, 650));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 520));
 
@@ -235,25 +199,9 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeUsuarioActionPerformed
 
-    private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
-        Logar();
-        savePreferences();
-
-    }//GEN-LAST:event_BtnLoginActionPerformed
-
     private void txtSenhaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaUsuarioActionPerformed
-
-    private void BtnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCriarContaActionPerformed
-
-        //chamar tela de criar conta
-        FormularioCriarContaVIEW objcriarcontaview = new FormularioCriarContaVIEW();
-        objcriarcontaview.setVisible(true);
-
-        dispose();
-
-    }//GEN-LAST:event_BtnCriarContaActionPerformed
 
     private void checkSenhaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSenhaLoginActionPerformed
         if (checkSenhaLogin.isSelected()) {
@@ -295,6 +243,17 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
         esqueci.setForeground(color);
     }//GEN-LAST:event_esqueciMouseExited
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        Logar();
+        savePreferences();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        FormularioCriarContaVIEW objcriarcontaview = new FormularioCriarContaVIEW();
+        objcriarcontaview.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -332,8 +291,6 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnCriarConta;
-    private javax.swing.JButton BtnLogin;
     private javax.swing.JLabel Senha;
     private javax.swing.JLabel Usuario;
     private javax.swing.JCheckBox checkSenhaLogin;
@@ -341,9 +298,7 @@ public class FormularioLoginVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     public javax.swing.JCheckBox lembrarLogin;
     private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JPasswordField txtSenhaUsuario;

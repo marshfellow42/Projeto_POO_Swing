@@ -114,6 +114,7 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
         exitBtn = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(455, 595));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -138,61 +139,65 @@ public class AppPrincipalVIEW extends javax.swing.JFrame {
                 pesquisaKeyReleased(evt);
             }
         });
-        jPanel1.add(pesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 420, -1));
+        jPanel1.add(pesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 420, -1));
 
         temperatura.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        temperatura.setForeground(new java.awt.Color(255, 255, 255));
         temperatura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        temperatura.setText(".");
-        jPanel1.add(temperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 119, 60));
+        temperatura.setText("28");
+        jPanel1.add(temperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 119, 60));
 
-        nomeCidade.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        nomeCidade.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        nomeCidade.setForeground(new java.awt.Color(204, 204, 204));
         nomeCidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        nomeCidade.setText(".");
-        jPanel1.add(nomeCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 68, 260, 50));
+        nomeCidade.setText("Example");
+        jPanel1.add(nomeCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 230, 50));
 
-        hora.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hora.setText(".");
-        jPanel1.add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 131, -1));
+        hora.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        hora.setForeground(new java.awt.Color(204, 204, 204));
+        hora.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        hora.setText("13:42");
+        jPanel1.add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 100, 50));
 
         icone.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         icone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(icone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 119, 78));
+        jPanel1.add(icone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 119, 78));
 
-        descricao.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        descricao.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        descricao.setForeground(new java.awt.Color(255, 255, 255));
         descricao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        descricao.setText(".");
-        jPanel1.add(descricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 286, 380, 39));
+        descricao.setText("oi");
+        jPanel1.add(descricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 380, 39));
 
         iconAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconAgua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-water-64.png"))); // NOI18N
-        jPanel1.add(iconAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 343, 56, 85));
+        jPanel1.add(iconAgua, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 300, 56, 85));
 
         iconVento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-wind-48.png"))); // NOI18N
-        jPanel1.add(iconVento, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 351, -1, 77));
+        jPanel1.add(iconVento, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, 77));
 
-        humidade.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        humidade.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         humidade.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        humidade.setText(".");
-        jPanel1.add(humidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 387, 144, -1));
+        humidade.setText("134");
+        jPanel1.add(humidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 144, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("Vento:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 343, 99, -1));
+        jLabel4.setText("Vento");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 99, -1));
 
-        JLabel3.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        JLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        JLabel3.setText("Umidade:");
-        jPanel1.add(JLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 343, 138, -1));
+        JLabel3.setText("Umidade");
+        jPanel1.add(JLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 138, -1));
 
-        ventania.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        ventania.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         ventania.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ventania.setText(".");
-        jPanel1.add(ventania, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 387, 140, -1));
-        jPanel1.add(jMapViewer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 210, 130));
+        ventania.setText("49");
+        jPanel1.add(ventania, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 140, -1));
+        jPanel1.add(jMapViewer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 230, 120));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/fundo-gradiente.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Design sem nome (5).png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 450, 600));
 
